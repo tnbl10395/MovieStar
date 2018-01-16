@@ -1,9 +1,13 @@
+import React from 'react';
+import { View,Dimensions } from 'react-native';
 import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
 import MoviesComponent from '../components/MoviesComponent';
 import FavoritesComponent from '../components/FavoritesComponent';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileComponent from '../components/ProfileComponent';
+
+const {width,height} = Dimensions.get('window');
 
 export const TabComponent = TabNavigator(
     {
@@ -48,6 +52,9 @@ export const DrawComponent = DrawerNavigator(
     },{
         initialRouteName: 'Home',
         drawerPosition:'left',
+        drawerWidth:width*0.8,
+        contentComponent: () => (<View></View>),
     }
 );
+
 

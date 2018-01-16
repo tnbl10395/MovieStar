@@ -19,7 +19,7 @@ class MoviesComponent extends React.Component {
             <View style={{flex:1}}>
                 <Header/>
                 <ItemReminder/>
-                <ItemList/>
+                {/* <ItemList/> */}
             </View>
         );
     }

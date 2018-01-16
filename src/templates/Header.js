@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Image } from 'react-native';
 
 export const Header = () => (
-    <View style={{flex:0.1,flexDirection:'row',justifyContent:'space-between',backgroundColor:'#2980b9',paddingBottom:10}}>
+    <View style={{flex:0.1,flexDirection:'row',justifyContent:'space-between',backgroundColor:'#2980b9',paddingBottom:20}}>
         <Image
             source={require('../images/view-sequential.png')}
             style={{width:40,height:40,left:25,top:5}}
