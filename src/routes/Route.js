@@ -6,6 +6,9 @@ import FavoritesComponent from '../components/FavoritesComponent';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileComponent from '../components/ProfileComponent';
+import { Avatar } from '../templates/Avatar';
+import { Reminder, ReminderList } from '../templates/ReminderList';
+import { EditButton } from '../templates/EditButton';
 
 const {width,height} = Dimensions.get('window');
 
@@ -50,10 +53,16 @@ export const DrawComponent = DrawerNavigator(
             screen: TabComponent
         },
     },{
-        initialRouteName: 'Home',
+        initialRouteName: 'Profile',
         drawerPosition:'left',
         drawerWidth:width*0.8,
-        contentComponent: () => (<View></View>),
+        contentComponent: () => (
+            <View style={{top:'3%'}}>
+                <Avatar/>
+                <EditButton/>
+                <ReminderList/>
+            </View>
+        ),
     }
 );
 
