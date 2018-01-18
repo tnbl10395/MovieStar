@@ -1,7 +1,7 @@
 import React from 'react';
 import { View,Dimensions } from 'react-native';
-import { TabNavigator, StackNavigator, DrawerNavigator } from 'react-navigation';
-import MoviesComponent from '../components/MoviesComponent';
+import { TabNavigator, StackNavigator, DrawerNavigator, addNavigationHelpers } from 'react-navigation';
+import MoviesContainer from '../containers/MoviesContainer';
 import FavoritesComponent from '../components/FavoritesComponent';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
@@ -9,13 +9,14 @@ import ProfileComponent from '../components/ProfileComponent';
 import { Avatar } from '../templates/Avatar';
 import { Reminder, ReminderList } from '../templates/ReminderList';
 import { EditButton } from '../templates/EditButton';
+import { connect } from 'react-redux';
 
 const {width,height} = Dimensions.get('window');
 
 export const TabComponent = TabNavigator(
     {
         Movies: {
-            screen: MoviesComponent
+            screen: MoviesContainer
         },
         Favorites: {
             screen: FavoritesComponent
@@ -53,7 +54,7 @@ export const DrawComponent = DrawerNavigator(
             screen: TabComponent
         },
     },{
-        initialRouteName: 'Profile',
+        initialRouteName: 'Home',
         drawerPosition:'left',
         drawerWidth:width*0.8,
         contentComponent: () => (
@@ -66,4 +67,11 @@ export const DrawComponent = DrawerNavigator(
     }
 );
 
+const mapStateToProps = (state) => ({
+    nav: state.nav
+})
 
+const AppWithNavigationState = ({dispatch,nav}) => (
+    <DrawComponent navigation={addNavigationHelpers({dispatch,state:nav})}/>
+);
+export default connect (mapStateToProps)(AppWithNavigationState);
