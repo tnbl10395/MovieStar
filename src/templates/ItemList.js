@@ -30,11 +30,11 @@ export const ItemList = () => (
                     <Text style={{fontSize:18,color:'red'}}>10/06/2017</Text>
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={{fontSize:18,color:'black'}}>Release date:</Text>
-                    <Text style={{fontSize:18,color:'red'}}>10/06/2017</Text>
+                    <Text style={{fontSize:18,color:'black'}}>Rating:</Text>
+                    <Text style={{fontSize:18,color:'red'}}>8.0/10.0</Text>
                 </View>
                 <View>
-                    <Text style={{color:'black'}}>Release date:</Text>
+                    <Text style={{color:'red'}}>Overview:</Text>
                     <Text style={{color:'black'}}>When a new Pokèmon emerges able to create parallel dimensions, it's up to Ash Ketchum and his friends to stop a mysterious stranger, who has plans to harness Giratina's power and control Reverse world, destroying the real world in the process!</Text>
                 </View>
             </View>

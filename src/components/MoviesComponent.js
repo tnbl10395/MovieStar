@@ -5,6 +5,11 @@ import { ItemReminder } from '../templates/ItemReminder';
 import { ItemList } from '../templates/ItemList';
 
 class MoviesComponent extends React.Component {
+
+    constructor(props){
+        super(props);
+    }
+
     static navigationOptions = {
         tabBarLabel: 'Movies',
         tabBarIcon: ({tintColor}) => (
@@ -14,12 +19,17 @@ class MoviesComponent extends React.Component {
             />
         ),
     }
+
+    componentWillMount() {
+        this.props.loadData();
+    }
+
     render(){
         return ( 
             <View style={{flex:1}}>
                 <Header/>
-                <ItemReminder/>
-                {/* <ItemList/> */}
+                {/* <ItemReminder/> */}
+                <ItemList/>
             </View>
         );
     }
