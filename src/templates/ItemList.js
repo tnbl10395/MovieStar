@@ -1,41 +1,47 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableWithoutFeedback,Dimensions } from 'react-native';
+import FavoriteButton from '../templates/FavoriteButton';
 
 const {width,height} = Dimensions.get('window');
 
-export const ItemList = () => (
-    <View style={{flexDirection:'column',borderBottomWidth:1,borderTopWidth:1,height:250}}>
+export const ItemList = (item,list) => (
+    list ? List(item) : Grid(item)
+    
+);
+
+export const Grid = (item) => (
+    <View style={{flexDirection:'column',height:250,flex:1,marginBottom:20}} key={item.id}>
+        <Image
+            source={{uri:'http://image.tmdb.org/t/p/w185/'+item.poster_path}}
+            style={{height:200,margin:5}}
+        />
+        <Text style={{fontWeight:'bold',fontSize:18,color:'black',marginLeft:5,textAlign:'center'}}>{item.title}</Text>
+    </View>
+);
+
+export const List = (item) => (
+    <View style={{flexDirection:'column',borderTopWidth:0.5,height:250}} key={item.id}>
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-            <Text style={{fontWeight:'bold',fontSize:18,color:'black',marginLeft:5}}>Pokemon: Giratina & The sky warrior</Text>
-            <TouchableWithoutFeedback
-                onPress={()=>alert('ok')}>
-                <Image 
-                    source={require('../images/star-outline.png')}
-                    style={{tintColor:'#2980b9'}}
-                />
-                {/* <Image 
-                    source={require('../images/star.png')}
-                    style={{tintColor:'#2980b9'}}
-                /> */}
-            </TouchableWithoutFeedback>
+            <Text style={{fontWeight:'bold',fontSize:18,color:'black',marginLeft:5}}>{item.title}</Text>
+            <FavoriteButton/>
         </View>
         <View style={{flexDirection:'row'}}>
             <Image
-                source={{uri:'http://image.phimmoi.net/film/2620/poster.medium.jpg'}}
+                source={{uri:'http://image.tmdb.org/t/p/w185/'+item.poster_path}}
                 style={{height:200,margin:5,flex:0.4}}
             />
             <View style={{flex:0.6}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={{fontSize:18,color:'black'}}>Release date:</Text>
-                    <Text style={{fontSize:18,color:'red'}}>10/06/2017</Text>
+                    <Text style={{fontSize:18,color:'red'}}>{item.release_date}</Text>
                 </View>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={{fontSize:18,color:'black'}}>Rating:</Text>
-                    <Text style={{fontSize:18,color:'red'}}>8.0/10.0</Text>
+                    <Text style={{fontSize:18,color:'red'}}>{item.vote_average}/10.0</Text>
                 </View>
                 <View>
                     <Text style={{color:'red'}}>Overview:</Text>
-                    <Text style={{color:'black'}}>When a new Pokèmon emerges able to create parallel dimensions, it's up to Ash Ketchum and his friends to stop a mysterious stranger, who has plans to harness Giratina's power and control Reverse world, destroying the real world in the process!</Text>
+                    <Text style={{color:'black'}}>{item.overview}</Text>
                 </View>
             </View>
         </View>

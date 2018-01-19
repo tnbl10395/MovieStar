@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import MoviesComponent from '../components/MoviesComponent';
 import { getPopular } from '../api/api';
+import { loadDataPopular } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-
+    data: state.popularReducer.data.results,
+    list: state.popularReducer.list,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     loadData: () => {
-        getPopular();
+        getPopular(dispatch,loadDataPopular);
     }
 });
 
