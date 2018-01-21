@@ -2,7 +2,7 @@ import React from 'react';
 import { View,Dimensions } from 'react-native';
 import { TabNavigator, StackNavigator, DrawerNavigator, addNavigationHelpers } from 'react-navigation';
 import MoviesContainer from '../containers/MoviesContainer';
-import FavoritesComponent from '../components/FavoritesComponent';
+import FavoritesContainer from '../containers/FavoritesContainer';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileComponent from '../components/ProfileComponent';
@@ -19,7 +19,7 @@ export const TabComponent = TabNavigator(
             screen: MoviesContainer
         },
         Favorites: {
-            screen: FavoritesComponent
+            screen: FavoritesContainer
         },
         Settings: {
             screen: SettingsComponent

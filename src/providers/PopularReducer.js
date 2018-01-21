@@ -7,12 +7,16 @@ import {
 const initialState = {
     data: [],
     list: true,
-    favorites: false,
 }
 
 const popularReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_DATA_POPULAR:
+            let arrayFavorites = [];
+            let dt = action.loadData
+            dt.results.forEach(element => {
+                arrayFavorites.push({id:element.id,favorites:false})
+            });
             return {
                 ...state,
                 data: action.loadData,

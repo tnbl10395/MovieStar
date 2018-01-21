@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableWithoutFeedback,Dimensions } from 'react-native';
 import FavoriteButton from '../templates/FavoriteButton';
+import { addFavorites } from '../localDatabase/localdatabase';
 
 const {width,height} = Dimensions.get('window');
 
@@ -23,7 +24,21 @@ export const List = (item) => (
     <View style={{flexDirection:'column',borderTopWidth:0.5,height:250}} key={item.id}>
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
             <Text style={{fontWeight:'bold',fontSize:18,color:'black',marginLeft:5}}>{item.title}</Text>
-            <FavoriteButton/>
+            <TouchableWithoutFeedback
+                onPress={()=>addFavorites( Obj(item) )}>
+                {/* {
+                    !favorites? */}
+                    <Image 
+                        source={require('../images/star-outline.png')}
+                        style={{tintColor:'#2980b9'}}
+                    />
+                    {/* :
+                    <Image 
+                        source={require('../images/star.png')}
+                        style={{tintColor:'#2980b9'}}
+                    />
+                } */}
+            </TouchableWithoutFeedback>
         </View>
         <View style={{flexDirection:'row'}}>
             <Image
@@ -47,3 +62,14 @@ export const List = (item) => (
         </View>
     </View>
 );
+
+const Obj = (item) => {
+    return obj = {
+            id: item.id,
+            title: item.title,
+            overview: item.overview,
+            vote_average: item.vote_average,
+            poster_path: item.poster_path,
+            release_date: item.release_date
+    }
+}
