@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MoviesComponent from '../components/MoviesComponent';
 import { getPopular } from '../api/api';
-import { loadDataPopular } from '../actions/PopularActions';
+import { loadDataPopular, addFavoriteList } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
     data: state.popularReducer.data.results,

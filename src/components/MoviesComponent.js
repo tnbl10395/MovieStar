@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, FlatList } from 'react-native';
 import HeaderContainer from '../containers/HeaderContainer';
 import { ItemReminder } from '../templates/ItemReminder';
-import { ItemList,ItemNotList } from '../templates/ItemList';
+import { ItemList } from '../templates/ItemList';
 
 class MoviesComponent extends React.Component {
 

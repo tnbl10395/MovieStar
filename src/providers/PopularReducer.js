@@ -27,9 +27,9 @@ const popularReducer = (state = initialState, action) => {
                 list: !state.list,
             }
         case ADD_FAVORITES:
+            alert('ok')
             return {
                 ...state,
-                favorites:!state.favorites
             }
         default:
             return state;
