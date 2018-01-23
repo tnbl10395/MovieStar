@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image } from 'react-native';
+import { TouchableWithoutFeedback, Image, AsyncStorage, Alert } from 'react-native';
 
-class FavoriteButton extends Component{
+class FavoriteButtonComponent extends React.Component{
     constructor(props){
         super(props)
     }
     
-    render(){
-        async function addFavorites(obj) {
-            try{    
-                // var a = await AsyncStorage.getItem('"'+obj.id+'"');
-                // alert(a);
-                await AsyncStorage.setItem('"'+obj.id+'"',JSON.stringify(obj),()=>{
-                    alert('Successfully!')
-                });
-            }catch(error){
-                alert(error)
-            }
-        }
-        
+    render(){ 
         const Obj = (item) => {
             return obj = {
                 id: item.id,
@@ -31,20 +19,22 @@ class FavoriteButton extends Component{
         }
         return (
             <TouchableWithoutFeedback
-                onPress={() => addFavorites(Obj(this.props.item))}>
-                {/* {
-                    !favorites? */}
+                onPress={() => this.props.addFavorite(Obj(this.props.item))}>
+                {
+                    !this.props.check?
                 <Image
                     source={require('../images/star-outline.png')}
                     style={{ tintColor: '#2980b9' }}
                 />
-                {/* :
+                :
                     <Image 
                         source={require('../images/star.png')}
                         style={{tintColor:'#2980b9'}}
                     />
-                } */}
+                }
             </TouchableWithoutFeedback>
         );
     }
 }
+
+export default FavoriteButtonComponent;

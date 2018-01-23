@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableWithoutFeedback, Dimensions, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
-import { addFavoriteList } from '../actions/PopularActions';
 import FavoriteButtonContainer from '../containers/FavoriteButtonContainer';
 // import { addFavorites } from '../localDatabase/localdatabase';
 
@@ -10,6 +9,10 @@ const { width, height } = Dimensions.get('window');
 export const ItemList = (item, list) => (
     list ? List(item) : Grid(item)
 
+);
+
+export const ItemFavoriteList = (item) => (
+    List(item)
 );
 
 const Grid = (item) => (
@@ -50,7 +53,6 @@ const List = (item) => (
         </View>
     </View>
 ); 
-
 
 
 

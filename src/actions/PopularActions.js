@@ -1,7 +1,8 @@
 import { 
     LOAD_DATA_POPULAR, 
     CHANGE_SHOW_LIST, 
-    ADD_FAVORITES 
+    ADD_FAVORITES, 
+    GET_FAVORITES
 } from '../actions/ActionTypes';
 
 export const loadDataPopular = (loadData) => {
@@ -17,8 +18,16 @@ export const changeShowListPopular = () => {
     }
 }
 
-export const addFavoriteList = () => {
+export const addFavoriteList = (object) => {
     return {
-        type: ADD_FAVORITES
+        type: ADD_FAVORITES,
+        object
+    }
+}
+
+export const getFavoriteList = (list) => {
+    return {
+        type: GET_FAVORITES,
+        list
     }
 }

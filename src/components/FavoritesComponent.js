@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, FlatList } from 'react-native';
 import HeaderContainer from '../containers/HeaderContainer';
+import { ItemFavoriteList } from '../templates/ItemList';
 
 class FavoritesComponent extends React.Component {
     static navigationOptions = {
@@ -9,20 +10,27 @@ class FavoritesComponent extends React.Component {
             <Image 
                 source={require('../images/heart.png')}
                 style={[{tintColor:tintColor},{width:23,height:23}]}
-                />
+            />
         ),
     }
+
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount(){
+        this.props.getFavoriteData();
+    }
+
     render(){
         return ( 
             <View style={{ flex: 1 }}>
                 <HeaderContainer />
-                {/* <FlatList
-                    data={this.props.data}
-                    renderItem={({ item }) => ItemList(item,this.props.list)}
-                    numColumns={this.props.list?1:2}
+                <FlatList
+                    data={this.props.favoriteData}
+                    renderItem={({ item }) => ItemFavoriteList(item)}
                     keyExtractor={(item,index)=>item.id}
-                    key={this.props.list?1:0}
-                /> */}
+                />
             </View>
         );
     }

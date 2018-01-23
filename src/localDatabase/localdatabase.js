@@ -1,3 +1,5 @@
+import { AsyncStorage } from "react-native";
+
 // import SQLite from 'react-native-sqlite-storage';
 
 // let db = SQLite.openDatabase({name : "movie", createFromLocation : "~movies.db"});
@@ -28,3 +30,28 @@
         // });
 //     });
 // }
+
+export async function addFavorites(obj,favoriteList) {
+        try{    
+                // var a = await AsyncStorage.getItem('"'+obj.id+'"');
+                // alert(a);
+                await AsyncStorage.setItem('"'+obj.id+'"',JSON.stringify(obj),()=>{
+                favoriteList.push(obj);
+                alert('ok')
+                });
+        }catch(error){
+                alert(error)
+        }
+}
+
+export async function getAllFavorites(dispatch,getFavoriteList) {
+        try{    
+                var keys = await AsyncStorage.getAllKeys();
+                await AsyncStorage.multiGet(keys,(err,stores)=>{
+                        alert(stores)
+                        dispatch(getFavoriteList(stores))
+                })
+        }catch(error){
+                alert(error)
+        }
+}
