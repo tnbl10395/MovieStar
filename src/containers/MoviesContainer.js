@@ -4,7 +4,7 @@ import { getPopular } from '../api/api';
 import { loadDataPopular, addFavoriteList } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-    data: state.popularReducer.data.results,
+    data: state.popularReducer.data,
     list: state.popularReducer.list,
 });
 

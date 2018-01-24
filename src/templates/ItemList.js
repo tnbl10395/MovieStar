@@ -29,7 +29,7 @@ const List = (item) => (
     <View style={{ flexDirection: 'column', borderTopWidth: 0.5, height: 250 }} key={item.id}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black', marginLeft: 5 }}>{item.title}</Text>
-            <FavoriteButtonContainer item={item}/>
+            <FavoriteButtonContainer item={item} key={item.id}/>
         </View>
         <View style={{ flexDirection: 'row' }}>
             <Image

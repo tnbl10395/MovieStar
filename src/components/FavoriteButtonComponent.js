@@ -4,28 +4,27 @@ import { TouchableWithoutFeedback, Image, AsyncStorage, Alert } from 'react-nati
 class FavoriteButtonComponent extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            
+        }
     }
-    
     render(){ 
-        const Obj = (item) => {
-            return obj = {
-                id: item.id,
-                title: item.title,
-                overview: item.overview,
-                vote_average: item.vote_average,
-                poster_path: item.poster_path,
-                release_date: item.release_date
+        const eventFavorite = () => {
+            if(this.props.item.check==true){
+                alert('ok');
+            }else{
+                this.props.addFavorite(this.props.item)
             }
         }
         return (
             <TouchableWithoutFeedback
-                onPress={() => this.props.addFavorite(Obj(this.props.item))}>
+                onPress={() => eventFavorite()}>
                 {
-                    !this.props.check?
-                <Image
-                    source={require('../images/star-outline.png')}
-                    style={{ tintColor: '#2980b9' }}
-                />
+                    this.props.star.indexOf(this.props.item.id)==-1?
+                    <Image
+                        source={require('../images/star-outline.png')}
+                        style={{ tintColor: '#2980b9' }}
+                    />
                 :
                     <Image 
                         source={require('../images/star.png')}

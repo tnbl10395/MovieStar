@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import FavoriteButtonComponent from '../components/FavoriteButtonComponent';
-import { addFavoriteList,getFavoriteList } from '../actions/PopularActions';
+import { addFavoriteList,getFavoriteList,loadDataPopular } from '../actions/PopularActions';
 import { AsyncStorage } from 'react-native';
 
 async function addFavorites(obj,dispatch,getFavoriteList) {
     try{    
         var data = [];
+        Object.assign(obj,{check:true});
         await AsyncStorage.setItem('"'+obj.id+'"',JSON.stringify(obj));
         var keys = await AsyncStorage.getAllKeys();
+        // await AsyncStorage.multiRemove(keys);
         await AsyncStorage.multiGet(keys,(err,stores)=>{
             stores.forEach(element=> {
                 data.push(JSON.parse(element[1]));
             });
-            dispatch(getFavoriteList(data))
+            dispatch(addFavoriteList(obj,data))
         })
     }catch(error){
             alert(error)
@@ -20,7 +22,7 @@ async function addFavorites(obj,dispatch,getFavoriteList) {
 }
 
 const mapStateToProps = (state) => ({
-    check: state.popularReducer.star
+    star: state.popularReducer.star
 });
 
 const mapDispatchToProps = (dispatch) => ({

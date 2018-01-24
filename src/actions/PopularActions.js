@@ -18,10 +18,11 @@ export const changeShowListPopular = () => {
     }
 }
 
-export const addFavoriteList = (object) => {
+export const addFavoriteList = (object,favoriteList) => {
     return {
         type: ADD_FAVORITES,
-        object
+        object,
+        favoriteList
     }
 }
 
