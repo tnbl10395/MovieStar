@@ -3,7 +3,8 @@ import {
     CHANGE_SHOW_LIST,
     ADD_FAVORITES,
     GET_FAVORITES,
-    REMOVE_FAVORITE
+    REMOVE_FAVORITE,
+    CHANGE_TITLE
 } from '../actions/ActionTypes';
 import { AsyncStorage } from 'react-native';
 
@@ -12,8 +13,7 @@ const initialState = {
     list: true,
     favoriteList: [],
     star: [],
-    starList:[],
-    check: false
+    
 }
 
 const popularReducer = (state = initialState, action) => {
@@ -25,9 +25,11 @@ const popularReducer = (state = initialState, action) => {
             var arrayFavorite = state.star;
             arrayData.forEach(element_1 => {
                 if (arrayFavorite.indexOf(element_1.id) == -1) {
-                    Object.assign(element_1, { check: require('../images/star-outline.png') })
+                    // Object.assign(element_1, { check: require('../images/star-outline.png') })
+                    Object.assign(element_1, { check: false })
                 } else {
-                    Object.assign(element_1, { check: require('../images/star.png') })
+                    Object.assign(element_1, { check: true })
+                    // Object.assign(element_1, { check: require('../images/star.png') })
                 }
             });
             return {
@@ -41,26 +43,18 @@ const popularReducer = (state = initialState, action) => {
             }
         case ADD_FAVORITES:
             var getStar = state.star;
-            var array = action.favoriteList;
-            // array.forEach(element => {
-                if (getStar.indexOf(action.object.id) == -1) {
-                    getStar.push(action.object.id);
+            var getData = state.data;
+            getData.forEach(element => {
+                if (element.id == action.object.id) {
+                    Object.assign(element, action.object);
+                    if (getStar.indexOf(action.object.id) == -1) {
+                        getStar.push(action.object.id)
+                    }
                 }
-            // });
-            // getData.forEach(element => {
-            //     if (element.id == action.object.id) {
-            //         Object.assign(element, action.object);
-            //         if (getStar.indexOf(action.object.id) == -1) {
-            //             getStar.push(action.object.id)
-            //             getStar1.push({id:action.object.id,checkStar:true})
-            //         }
-            //     }
-            // });
+            });
             return {
                 ...state,
-                star: getStar,
                 favoriteList: action.favoriteList,
-                check: !state.check
             }
         case REMOVE_FAVORITE:
             var getData = state.data;
@@ -76,8 +70,6 @@ const popularReducer = (state = initialState, action) => {
             });
             return {
                 ...state,
-                data: getData,
-                star: getStar,
                 favoriteList: action.favoriteList
             }
         case GET_FAVORITES:
@@ -86,16 +78,13 @@ const popularReducer = (state = initialState, action) => {
             array.forEach(element => {
                 checkStar.push(element.id);
             });
-            // var checkStar1 = [];
-            // var array1 = action.list;
-            // array1.forEach(element => {
-            //     checkStar1.push({id:element.id,checkStar:true});
-            // });
             return {
                 ...state,
                 favoriteList: action.list,
                 star: checkStar,
             }
+        case CHANGE_TITLE:
+            
         default:
             return state;
     }

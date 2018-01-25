@@ -9,6 +9,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     changeShowList: () => {
         dispatch(changeShowListPopular());
+    },
+    changeTitle: () => {
+        dispatch(changeTitles());
     }
 });
 

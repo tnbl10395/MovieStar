@@ -6,7 +6,6 @@ import { loadDataPopular, addFavoriteList } from '../actions/PopularActions';
 const mapStateToProps = (state) => ({
     data: state.popularReducer.data,
     list: state.popularReducer.list,
-    star: state.popularReducer.star
 });
 
 const mapDispatchToProps = (dispatch) => ({

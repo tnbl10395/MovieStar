@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { TouchableWithoutFeedback, Image, Alert } from 'react-native';
 
-class FavoriteButtonComponent extends React.Component {
+class FavoriteButtonComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            star: null
+            // star: this.props.item.check
         }
     }
 
     render() {
+        let url = this.props.item.check? require('../images/star.png'):require('../images/star-outline.png');
+
         const eventFavorite = () => {
 
-            if (this.props.item.check == require('../images/star-outline.png')) {
-                // this.setState({
-                //     star: this.props.item.check
-                // })
+            if (this.props.item.check == false) {
                 this.props.addFavorite(this.props.item);
-                alert(this.props.item.check)
-            } else if(this.props.item.check == require('../images/star.png')){
+                this.setState({});
+            } else if(this.props.item.check == true){
                 Alert.alert(
                     "Are you sure you want to unfavorate this movie?",
                     '',
@@ -33,18 +32,14 @@ class FavoriteButtonComponent extends React.Component {
 
         const remove = () => {
             this.props.removeFavorite(this.props.item);
-            // this.setState({
-            //     star: this.props.item.check
-            // })
-            alert(this.props.item.check)
+            this.setState({});
         }
 
         return (
             <TouchableWithoutFeedback
                 onPress={() => eventFavorite()}>
                 <Image
-
-                    source={this.props.item.check}
+                    source={url}
                     style={{ tintColor: '#2980b9' }}
                 />
             </TouchableWithoutFeedback>

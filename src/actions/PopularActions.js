@@ -3,7 +3,8 @@ import {
     CHANGE_SHOW_LIST, 
     ADD_FAVORITES, 
     GET_FAVORITES,
-    REMOVE_FAVORITE
+    REMOVE_FAVORITE,
+    CHANGE_TITLE
 } from '../actions/ActionTypes';
 
 export const loadDataPopular = (loadData) => {
@@ -39,5 +40,12 @@ export const removeFavorite = (object,favoriteList) => {
         type: REMOVE_FAVORITE,
         object,
         favoriteList
+    }
+}
+
+export const changeTitles = (title) => {
+    return {
+        type: CHANGE_TITLE,
+        title
     }
 }

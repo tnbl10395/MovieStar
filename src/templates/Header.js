@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
-export const Header = ({list, changeShowList}) => (
+export const Header = ({list, changeShowList, changeTitle}) => (
     <View style={{flex:0.1,flexDirection:'row',justifyContent:'space-between',backgroundColor:'#2980b9',paddingBottom:20}}>
         <Image
             source={require('../images/view-sequential.png')}
             style={{width:40,height:40,left:25,top:5}}
         />
-        <Text style={{color:'white',fontWeight:'bold',fontSize:24,top:5}}>Popular</Text>
+        <TouchableOpacity
+            onPress={()=>changeTitle()}>
+            <Text style={{color:'white',fontWeight:'bold',fontSize:24,top:5}}>Popular</Text>
+        </TouchableOpacity>
         <View>
             <TouchableWithoutFeedback
                 onPress={()=>changeShowList()}>
