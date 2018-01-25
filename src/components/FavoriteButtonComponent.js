@@ -10,27 +10,24 @@ class FavoriteButtonComponent extends React.Component{
     }
     render(){ 
         const eventFavorite = () => {
-            if(this.props.item.check==true){
-                alert('ok');
-            }else{
-                this.props.addFavorite(this.props.item)
-            }
+            // if(this.props.item.check==true){
+            //     alert(this.props.item.check);
+            // }else{
+            //     alert(this.props.item.check);
+            this.props.addFavorite(this.props.item);
+            alert(this.props.star1);
+            // }
         }
         return (
             <TouchableWithoutFeedback
                 onPress={() => eventFavorite()}>
-                {
-                    this.props.star.indexOf(this.props.item.id)==-1?
-                    <Image
-                        source={require('../images/star-outline.png')}
+                <Image
+                        source={
+                            true? 
+                                require('../images/star-outline.png'):require('../images/star.png')
+                            }
                         style={{ tintColor: '#2980b9' }}
                     />
-                :
-                    <Image 
-                        source={require('../images/star.png')}
-                        style={{tintColor:'#2980b9'}}
-                    />
-                }
             </TouchableWithoutFeedback>
         );
     }

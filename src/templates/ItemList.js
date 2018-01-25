@@ -6,8 +6,8 @@ import FavoriteButtonContainer from '../containers/FavoriteButtonContainer';
 
 const { width, height } = Dimensions.get('window');
 
-export const ItemList = (item, list) => (
-    list ? List(item) : Grid(item)
+export const ItemList = (item, list, star) => (
+    list ? List(item, star) : Grid(item)
 
 );
 
@@ -25,11 +25,11 @@ const Grid = (item) => (
     </View>
 );
 
-const List = (item) => (
+const List = (item, star) => (
     <View style={{ flexDirection: 'column', borderTopWidth: 0.5, height: 250 }} key={item.id}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black', marginLeft: 5 }}>{item.title}</Text>
-            <FavoriteButtonContainer item={item} key={item.id}/>
+            <FavoriteButtonContainer item={item} star={star} />
         </View>
         <View style={{ flexDirection: 'row' }}>
             <Image
@@ -52,7 +52,7 @@ const List = (item) => (
             </View>
         </View>
     </View>
-); 
+);
 
 
 

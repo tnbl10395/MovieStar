@@ -19,7 +19,7 @@ async function getAllFavorites(dispatch,getFavoriteList) {
 }
 
 const mapStateToProps = (state) => ({
-    favoriteData: state.popularReducer.favoriteList
+    favoriteData: state.popularReducer.favoriteList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

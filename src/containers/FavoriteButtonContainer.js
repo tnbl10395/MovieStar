@@ -6,7 +6,8 @@ import { AsyncStorage } from 'react-native';
 async function addFavorites(obj,dispatch,getFavoriteList) {
     try{    
         var data = [];
-        Object.assign(obj,{check:true});
+        // alert(JSON.stringify(obj))
+        // Object.assign(obj,{check:true});
         await AsyncStorage.setItem('"'+obj.id+'"',JSON.stringify(obj));
         var keys = await AsyncStorage.getAllKeys();
         // await AsyncStorage.multiRemove(keys);
@@ -22,7 +23,8 @@ async function addFavorites(obj,dispatch,getFavoriteList) {
 }
 
 const mapStateToProps = (state) => ({
-    star: state.popularReducer.star
+    star1: state.popularReducer.star,
+    // check: state.popularReducer.check
 });
 
 const mapDispatchToProps = (dispatch) => ({
