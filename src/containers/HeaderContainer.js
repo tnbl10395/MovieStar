@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import { Header } from '../templates/Header';
-import { changeShowListPopular } from '../actions/PopularActions';
+import { changeShowListPopular, changeTitles } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-    list: state.popularReducer.list
+    list: state.popularReducer.list,
+    title: state.popularReducer.title
 });
 
 const mapDispatchToProps = (dispatch) => ({
     changeShowList: () => {
         dispatch(changeShowListPopular());
     },
-    changeTitle: () => {
-        dispatch(changeTitles());
+    changeTitle: (title) => {
+        dispatch(changeTitles(title));
     }
 });
 

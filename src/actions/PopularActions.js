@@ -4,7 +4,11 @@ import {
     ADD_FAVORITES, 
     GET_FAVORITES,
     REMOVE_FAVORITE,
-    CHANGE_TITLE
+    CHANGE_TITLE,
+    LOAD_DATA_NOW_PLAYING,
+    LOAD_DATA_TOP_RATED,
+    LOAD_DATA_UPCOMING,
+    CHANGE_SEARCH_BUTTON
 } from '../actions/ActionTypes';
 
 export const loadDataPopular = (loadData) => {
@@ -47,5 +51,32 @@ export const changeTitles = (title) => {
     return {
         type: CHANGE_TITLE,
         title
+    }
+}
+
+export const loadDataNowPlaying = (loadData) => {
+    return {
+        type: LOAD_DATA_NOW_PLAYING,
+        loadData
+    }
+}
+
+export const loadDataTopRated = (loadData) => {
+    return {
+        type: LOAD_DATA_TOP_RATED,
+        loadData
+    }
+}
+
+export const loadDataUpcoming = (loadData) => {
+    return {
+        type: LOAD_DATA_UPCOMING,
+        loadData
+    }
+}
+
+export const changeSearchButton = () => {
+    return {
+        type: CHANGE_SEARCH_BUTTON
     }
 }

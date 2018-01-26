@@ -21,7 +21,10 @@ class MoviesComponent extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadData();
+        this.props.loadPopular();
+        this.props.loadNowPlaying();
+        this.props.loadTopRated();
+        this.props.loadUpcoming();
     }
 
     render() {
@@ -30,7 +33,7 @@ class MoviesComponent extends React.Component {
                 <HeaderContainer />
                 <FlatList
                     data={this.props.data}
-                    renderItem={({ item }) => ItemList(item,this.props.list,this.props.star)}
+                    renderItem={({ item }) => ItemList(item,this.props.list,this.props.star,this.props.navigation)}
                     numColumns={this.props.list?1:2}
                     keyExtractor={(item,index)=>item.id}
                     key={this.props.list?1:0}

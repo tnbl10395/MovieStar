@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
 import { AppRegistry } from 'react-native';
-import {DrawComponent} from './src/routes/Route';
+import {DrawComponent,Route} from './src/routes/Route';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './src/providers/rootReducer';
@@ -18,7 +18,8 @@ export default class App extends React.Component {
                         barStyle="light-content"
                     />
                     {/* <AppWithNavigationState /> */}
-                    <DrawComponent/>
+                    {/* <DrawComponent/> */}
+                    <Route/>
                 </View>
             </Provider>
         );

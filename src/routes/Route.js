@@ -6,6 +6,7 @@ import FavoritesContainer from '../containers/FavoritesContainer';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileComponent from '../components/ProfileComponent';
+import DetailContainer from '../containers/DetailContainer';
 import { Avatar } from '../templates/Avatar';
 import { Reminder, ReminderList } from '../templates/ReminderList';
 import { EditButton } from '../templates/EditButton';
@@ -67,11 +68,25 @@ export const DrawComponent = DrawerNavigator(
     }
 );
 
-const mapStateToProps = (state) => ({
-    nav: state.nav
-})
+export const Route = StackNavigator(
+    {
+        Draw: {
+            screen: DrawComponent,         
+            navigationOptions:{
+                header:null
+            }   
+        },
+        Detail: {
+            screen: DetailContainer
+        }
+    }
+)
 
-const AppWithNavigationState = ({dispatch,nav}) => (
-    <DrawComponent navigation={addNavigationHelpers({dispatch,state:nav})}/>
-);
-export default connect (mapStateToProps)(AppWithNavigationState);
+// const mapStateToProps = (state) => ({
+//     nav: state.nav
+// })
+
+// const AppWithNavigationState = ({dispatch,nav}) => (
+//     <TabComponent navigation={addNavigationHelpers({dispatch,state:nav})}/>
+// );
+// export default connect (mapStateToProps)(AppWithNavigationState);

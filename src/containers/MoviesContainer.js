@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MoviesComponent from '../components/MoviesComponent';
-import { getPopular } from '../api/api';
-import { loadDataPopular, addFavoriteList } from '../actions/PopularActions';
+import { getPopular, getNowPlaying, getTopRated, getUpcoming } from '../api/api';
+import { loadDataPopular, addFavoriteList, loadDataNowPlaying, loadDataTopRated, loadDataUpcoming } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
     data: state.popularReducer.data,
@@ -9,9 +9,18 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    loadData: () => {
-        getPopular(dispatch,loadDataPopular);
+    loadPopular: () => {
+        getPopular(dispatch, loadDataPopular);
+    },
+    loadNowPlaying: () => {
+        getNowPlaying(dispatch, loadDataNowPlaying);
+    },
+    loadTopRated: () => {
+        getTopRated(dispatch, loadDataTopRated);
+    },
+    loadUpcoming: () => {
+        getUpcoming(dispatch, loadDataUpcoming);
     }
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(MoviesComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesComponent);

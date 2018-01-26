@@ -3,7 +3,7 @@ import nav from '../providers/nav';
 import popularReducer from '../providers/PopularReducer';
 
 const rootReducer = combineReducers({
-    nav,
+    // nav,
     popularReducer
 });
 
