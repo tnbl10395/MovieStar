@@ -5,6 +5,7 @@ import {DrawComponent,Route} from './src/routes/Route';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './src/providers/rootReducer';
+import HeaderContainer from './src/containers/HeaderContainer';
 
 const store = createStore(rootReducer);
 
@@ -18,8 +19,9 @@ export default class App extends React.Component {
                         barStyle="light-content"
                     />
                     {/* <AppWithNavigationState /> */}
-                    {/* <DrawComponent/> */}
-                    <Route/>
+                    {/* <HeaderContainer navigation={this.props.navigation}/> */}
+                    <DrawComponent/>
+                    {/* <Route/> */}
                 </View>
             </Provider>
         );

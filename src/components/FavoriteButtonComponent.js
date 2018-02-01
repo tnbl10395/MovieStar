@@ -5,19 +5,19 @@ class FavoriteButtonComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // star: this.props.item.check
+            star: this.props.item.check
         }
     }
 
     render() {
-        let url = this.props.item.check? require('../images/star.png'):require('../images/star-outline.png');
+        let url = this.state.star? require('../images/star.png'):require('../images/star-outline.png');
 
         const eventFavorite = () => {
 
-            if (this.props.item.check == false) {
+            if (this.props.item.check == 0) {
+                this.setState({star:!this.props.item.check});
                 this.props.addFavorite(this.props.item);
-                this.setState({});
-            } else if(this.props.item.check == true){
+            } else if(this.props.item.check == 1){
                 Alert.alert(
                     "Are you sure you want to unfavorate this movie?",
                     '',
@@ -32,7 +32,7 @@ class FavoriteButtonComponent extends Component {
 
         const remove = () => {
             this.props.removeFavorite(this.props.item);
-            this.setState({});
+            this.setState({star:!this.props.item.check});
         }
 
         return (

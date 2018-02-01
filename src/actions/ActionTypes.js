@@ -13,3 +13,11 @@ export const LOAD_DATA_NOW_PLAYING = 'LOAD_DATA_NOW_PLAYING';
 export const LOAD_DATA_TOP_RATED = 'LOAD_DATA_TOP_RATED';
 //Upcoming
 export const LOAD_DATA_UPCOMING = 'LOAD_DATA_UPCOMING';
+//detail
+export const LOAD_DATA_DETAIL = 'LOAD_DATA_DETAIL';
+//credit
+export const LOAD_DATA_CREDIT = 'LOAD_DATA_CREDIT';
+//reminder 
+export const ADD_REMINDER = 'ADD_REMINDER';
+export const LOAD_REMINDER = 'LOAD_REMINDER';
+export const REMOVE_REMINDER = 'REMOVE_REMINDER';

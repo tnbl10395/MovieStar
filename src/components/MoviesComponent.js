@@ -10,15 +10,15 @@ class MoviesComponent extends React.Component {
         super(props);
     }
 
-    static navigationOptions = {
-        tabBarLabel: 'Movies',
-        tabBarIcon: ({ tintColor }) => (
-            <Image
-                source={require('../images/home.png')}
-                style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
-            />
-        ),
-    }
+    // static navigationOptions = {
+    //     tabBarLabel: 'Movies',
+    //     tabBarIcon: ({ tintColor }) => (
+    //         <Image
+    //             source={require('../images/home.png')}
+    //             style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
+    //         />
+    //     ),
+    // }
 
     componentDidMount() {
         this.props.loadPopular();
@@ -29,11 +29,11 @@ class MoviesComponent extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <HeaderContainer />
+            <View style={{ flex: 1, backgroundColor:'white' }}>
+                <HeaderContainer/>
                 <FlatList
                     data={this.props.data}
-                    renderItem={({ item }) => ItemList(item,this.props.list,this.props.star,this.props.navigation)}
+                    renderItem={({ item }) => ItemList(item,this.props.list,this.props.navigation)}
                     numColumns={this.props.list?1:2}
                     keyExtractor={(item,index)=>item.id}
                     key={this.props.list?1:0}

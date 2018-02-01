@@ -29,3 +29,19 @@ export const getUpcoming = (dispatch,loadDataUpcoming) => {
         dispatch(loadDataUpcoming(responseJson));
     });
 }
+
+export const getDetail = (dispatch, loadDataDetail, movieId) => {
+    fetch('https://api.themoviedb.org/3/movie/'+movieId+'?api_key=0267c13d8c7d1dcddb40001ba6372235')
+    .then((response)=>response.json())
+    .then((responseJson)=>{
+        dispatch(loadDataDetail(responseJson));
+    });
+}
+
+export const getCredit = (dispatch, loadDataCredit, movieId) => {
+    fetch('https://api.themoviedb.org/3/movie/'+movieId+'/credits?api_key=0267c13d8c7d1dcddb40001ba6372235')
+    .then((response)=>response.json())
+    .then((responseJson)=>{
+        dispatch(loadDataCredit(responseJson));
+    });
+}

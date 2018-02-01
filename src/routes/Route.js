@@ -1,26 +1,81 @@
 import React from 'react';
-import { View,Dimensions } from 'react-native';
-import { TabNavigator, StackNavigator, DrawerNavigator, addNavigationHelpers } from 'react-navigation';
+import { View, Dimensions, Image, Text, TouchableOpacity,  } from 'react-native';
+import { TabNavigator, StackNavigator, DrawerNavigator, addNavigationHelpers, NavigationActions } from 'react-navigation';
 import MoviesContainer from '../containers/MoviesContainer';
 import FavoritesContainer from '../containers/FavoritesContainer';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileComponent from '../components/ProfileComponent';
 import DetailContainer from '../containers/DetailContainer';
+import ReminderContainer from '../containers/ReminderContainer';
 import { Avatar } from '../templates/Avatar';
 import { Reminder, ReminderList } from '../templates/ReminderList';
 import { EditButton } from '../templates/EditButton';
 import { connect } from 'react-redux';
 
-const {width,height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
+
+export const MoviesStack = StackNavigator({
+    Movies: {
+        screen: MoviesContainer,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Detail: {
+        screen: DetailContainer,
+        navigationOptions: {
+            headerStyle:{
+                backgroundColor:'#2980b9',
+            },
+            headerTintColor:'white'     
+        }
+    }
+})
+
+export const FavoritesStack = StackNavigator({
+    Favorites: {
+        screen: FavoritesContainer,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Detail: {
+        screen: DetailContainer,
+        navigationOptions: {
+            headerStyle:{
+                backgroundColor:'#2980b9',
+            },
+            headerTintColor:'white'     
+        }
+    }
+})
 
 export const TabComponent = TabNavigator(
     {
         Movies: {
-            screen: MoviesContainer
+            screen: MoviesStack,
+            navigationOptions: {
+                tabBarLabel: 'Movies',
+                tabBarIcon: ({ tintColor }) => (
+                    <Image
+                        source={require('../images/home.png')}
+                        style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
+                    />
+                ),
+            }
         },
         Favorites: {
-            screen: FavoritesContainer
+            screen: FavoritesStack,
+            navigationOptions: {
+                tabBarLabel: 'Favorites',
+                tabBarIcon: ({ tintColor }) => (
+                    <Image
+                        source={require('../images/heart.png')}
+                        style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
+                    />
+                ),
+            }
         },
         Settings: {
             screen: SettingsComponent
@@ -28,21 +83,21 @@ export const TabComponent = TabNavigator(
         About: {
             screen: AboutComponent
         },
-    },{
+    }, {
         tabBarPosition: 'bottom',
         swipeEnabled: false,
         animationEnabled: true,
-        tabBarOptions:{
-            style:{
+        tabBarOptions: {
+            style: {
                 backgroundColor: '#2980b9',
-                top:'2%'
+                top: '2%'
             },
             renderIndicator: () => null,
             showIcon: true,
             showLabel: true,
             upperCaseLabel: false,
         },
-      
+
     }
 );
 
@@ -54,33 +109,27 @@ export const DrawComponent = DrawerNavigator(
         Home: {
             screen: TabComponent
         },
-    },{
+        Reminder: {
+            screen: ReminderContainer,
+            navigationOptions:{
+                title:'Reminders'
+            }
+        }
+    }, {
         initialRouteName: 'Home',
-        drawerPosition:'left',
-        drawerWidth:width*0.8,
-        contentComponent: () => (
-            <View style={{top:'3%'}}>
-                <Avatar/>
-                <EditButton/>
-                <ReminderList/>
+        drawerPosition: 'left',
+        drawerWidth: width * 0.8,
+        contentComponent: ({navigation}) => (
+            <View style={{ top: '3%' }}>
+                <Avatar />
+                <EditButton />
+                <ReminderList navigation={navigation}/>
             </View>
         ),
     }
 );
 
-export const Route = StackNavigator(
-    {
-        Draw: {
-            screen: DrawComponent,         
-            navigationOptions:{
-                header:null
-            }   
-        },
-        Detail: {
-            screen: DetailContainer
-        }
-    }
-)
+
 
 // const mapStateToProps = (state) => ({
 //     nav: state.nav
