@@ -11,6 +11,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     loadReminder: () => {
         getAllReminder(dispatch,loadReminder);
+    },
+    removeReminder: () => {
+        alert('ok')
+        // removeReminderList(obj,dispatch,removeReminder)
     }
 });
 

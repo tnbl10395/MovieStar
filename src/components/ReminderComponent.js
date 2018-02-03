@@ -16,7 +16,7 @@ class ReminderComponent extends React.Component {
             <View style={{ flex: 1, backgroundColor:'white' }}>
                 <FlatList
                     data={this.props.data}
-                    renderItem={({item}) => ItemReminder(item)}
+                    renderItem={({item}) => ItemReminder(item,this.props.removeReminder)}
                     keyExtractor={(item,index)=>item.id}
                 />
             </View>

@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, Image, Text, Alert } from 'react-native';
+import { View, Image, Text, Alert, Button } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { removeReminder } from '../actions/PopularActions';
 
 export const ItemReminder = (item, removeReminder) => (
     <Swipeout
-        // {...swipeSettings}
         right={swipeoutBtns}
         style={{ backgroundColor: 'white' }}>
         <View style={{ flexDirection: 'row', borderWidth: 1 }}>
