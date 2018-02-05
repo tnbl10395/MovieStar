@@ -1,4 +1,5 @@
 import SQLite from 'react-native-sqlite-storage';
+import PushNotification from 'react-native-push-notification'; 
 
 let db = SQLite.openDatabase({ name: "movie", createFromLocation: "~movies.db" });
 
@@ -85,6 +86,11 @@ export const addReminderList = (obj,dispatch,addReminder) => {
                 var query2 = 'select * from reminder';
                 tx.executeSql(query1, array, (tx, results) => {
                         if (results.insertId != null) {
+                                PushNotification.localNotificationSchedule({
+                                        message: obj.title, // (required)
+                                        id: obj.id,
+                                        date: new Date(obj.fulldate) // in 60 secs
+                                      });
                                 tx.executeSql(query2, [], (tx, results) => {
                                         for(var i = 0;i<results.rows.length;i++){
                                                 data.push(results.rows.item(i));
@@ -121,10 +127,13 @@ export const removeReminderList = (obj,dispatch,removeReminder) => {
                 var query1 = 'delete from reminder where id=?';
                 var query2 = 'select * from reminder';
                 tx.executeSql(query1, [obj.id], (tx, results) => {
+                        alert(obj.id);
+                        PushNotification.cancelLocalNotifications({id: obj.id});
                         tx.executeSql(query2, [], (tx, results) => {
                                 for(var i = 0;i<results.rows.length;i++){
                                         data.push(results.rows.item(i));
                                 }
+                                // alert(JSON.stringify(data))
                                 dispatch(removeReminder(obj,data));           
                         }, (error) => {
                                 alert(JSON.stringify(error))

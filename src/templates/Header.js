@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
-export const Header = ({list, changeShowList, changeTitle, title, navigation}) => (
+export const Header = ({list, changeShowList, changeTitle, title, nav}) => (
     <View style={{flex:0.1,flexDirection:'row',justifyContent:'space-between',backgroundColor:'#2980b9',paddingBottom:10}}>
-        <TouchableWithoutFeedback onPress={()=>navigaton.navigate('DrawerOpen')}>
+        <TouchableWithoutFeedback onPress={()=>nav.navigate('DrawerOpen')}>
             <Image
                 source={require('../images/view-sequential.png')}
                 style={{width:40,height:40,left:25,top:5}}

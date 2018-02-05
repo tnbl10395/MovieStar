@@ -30,7 +30,7 @@ class MoviesComponent extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor:'white' }}>
-                <HeaderContainer/>
+                <HeaderContainer nav={this.props.navigation}/>
                 <FlatList
                     data={this.props.data}
                     renderItem={({ item }) => ItemList(item,this.props.list,this.props.navigation)}

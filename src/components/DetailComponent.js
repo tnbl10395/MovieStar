@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DetailMovie } from '../templates/DetailMovie';
 import { CreditMovie } from '../templates/CreditMovie';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, Button } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 class DetailComponent extends React.Component{
@@ -16,8 +16,8 @@ class DetailComponent extends React.Component{
 
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
   
-    _handleDatePicked = (date) => {
-        var d = new Date(date);
+    _handleDatePicked = (fulldate) => {
+        var d = new Date(fulldate);
         var data = this.props.dataDetail;
         var date = d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate();
         var time = d.getHours()+':'+d.getMinutes();
@@ -28,7 +28,8 @@ class DetailComponent extends React.Component{
             vote_average: data.vote_average,
             date: date,
             time: time,
-            poster_path: data.poster_path
+            poster_path: data.poster_path,
+            fulldate: fulldate
         }
         Alert.alert(
             'Reminder',
@@ -40,7 +41,7 @@ class DetailComponent extends React.Component{
         this._hideDateTimePicker();
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.loadDetail(this.props.navigation.state.params.name.id);
         this.props.loadCredit(this.props.navigation.state.params.name.id);
     }

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ReminderComponent from '../components/ReminderComponent';
-import { loadReminder } from '../actions/PopularActions';
-import { getAllReminder } from '../localDatabase/localdatabase';
+import { loadReminder, removeReminder } from '../actions/PopularActions';
+import { getAllReminder, removeReminderList } from '../localDatabase/localdatabase';
 
 
 const mapStateToProps = (state) => ({
@@ -12,9 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
     loadReminder: () => {
         getAllReminder(dispatch,loadReminder);
     },
-    removeReminder: () => {
-        alert('ok')
-        // removeReminderList(obj,dispatch,removeReminder)
+    removeReminder: (obj) => {
+        removeReminderList(obj,dispatch,removeReminder)
     }
 });
 

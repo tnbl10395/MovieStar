@@ -4,7 +4,23 @@ import Swipeout from 'react-native-swipeout';
 
 export const ItemReminder = (item, removeReminder) => (
     <Swipeout
-        right={swipeoutBtns}
+        right={[
+            {
+                type:'delete',
+                text: 'Delete',
+                onPress: () => {
+                    Alert.alert(
+                        'Are you sure you want to delete this remender?',
+                        '',
+                        [
+                            { text: 'Cancel', style: 'cancel' },
+                            { text: 'OK', onPress: () => removeReminder(item) },
+                        ],
+                        { cancelable: false }
+                    )
+                }
+            }
+        ]}
         style={{ backgroundColor: 'white' }}>
         <View style={{ flexDirection: 'row', borderWidth: 1 }}>
             <Image
@@ -25,20 +41,3 @@ export const ItemReminder = (item, removeReminder) => (
     </Swipeout>
 );
 
-const swipeoutBtns = [
-    {
-        backgroundColor:'red',
-        text: 'Delete',
-        onPress: () => {
-            Alert.alert(
-                'Are you sure you want to delete this remender?',
-                '',
-                [
-                    { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                    { text: 'OK', onPress: () => removeReminder() },
-                ],
-                { cancelable: false }
-            )
-        }
-    }
-]
