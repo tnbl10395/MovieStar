@@ -13,7 +13,9 @@ import {
     LOAD_DATA_CREDIT,
     ADD_REMINDER,
     LOAD_REMINDER,
-    REMOVE_REMINDER
+    REMOVE_REMINDER,
+    LOAD_PROFILE,
+    GO_PROFILE
 } from '../actions/ActionTypes';
 import { AsyncStorage } from 'react-native';
 
@@ -32,6 +34,17 @@ const initialState = {
     detail: [],
     credit: [],
     reminder: [],
+    profile: {
+        name:"Lewis",
+        birthday:"1995-10-03",
+        email:"lewis@enclave.vn",
+        sex: true
+    },
+    goProfile: false,
+    name:'',
+    birthday:'',
+    email:'',
+    sex: true
 }
 
 const popularReducer = (state = initialState, action) => {
@@ -213,11 +226,25 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 reminder: action.reminderList
             }
+
         case REMOVE_REMINDER:
             return {
                 ...state,
                 reminder: action.reminderList
             }
+
+        case LOAD_PROFILE:
+            return {
+                ...state,
+                profile: action.loadData
+            }
+
+        case GO_PROFILE:   
+            return {
+                ...state,
+                goProfile: !state.goProfile
+            }
+
         default:
             return state;
     }

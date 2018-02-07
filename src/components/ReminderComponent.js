@@ -7,9 +7,9 @@ class ReminderComponent extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
-        this.props.loadReminder();
-    }
+    // componentDidMount(){
+    //     this.props.loadReminder();
+    // }
 
     render() {
         return (

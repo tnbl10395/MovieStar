@@ -21,3 +21,6 @@ export const LOAD_DATA_CREDIT = 'LOAD_DATA_CREDIT';
 export const ADD_REMINDER = 'ADD_REMINDER';
 export const LOAD_REMINDER = 'LOAD_REMINDER';
 export const REMOVE_REMINDER = 'REMOVE_REMINDER';
+//profile
+export const LOAD_PROFILE = 'LOAD_PROFILE';
+export const GO_PROFILE = 'GO_PROFILE'

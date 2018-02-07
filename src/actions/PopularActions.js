@@ -13,7 +13,10 @@ import {
     LOAD_DATA_CREDIT,
     ADD_REMINDER,
     LOAD_REMINDER,
-    REMOVE_REMINDER
+    REMOVE_REMINDER,
+    LOAD_PROFILE,
+    EDIT_PROFILE,
+    GO_PROFILE
 } from '../actions/ActionTypes';
 
 export const loadDataPopular = (loadData) => {
@@ -119,5 +122,18 @@ export const removeReminder = (object, reminderList) => {
         type: REMOVE_REMINDER,
         object,
         reminderList
+    }
+}
+
+export const loadProfile = (loadData) => {
+    return {
+        type: LOAD_PROFILE,
+        loadData
+    }
+}
+
+export const goProfile = () => {
+    return {
+        type: GO_PROFILE,
     }
 }
