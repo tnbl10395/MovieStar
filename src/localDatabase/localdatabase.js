@@ -1,7 +1,7 @@
 import SQLite from 'react-native-sqlite-storage';
 import PushNotification from 'react-native-push-notification';
 
-let db = SQLite.openDatabase({ name: "movie", createFromLocation: "~movies.db" });
+let db = SQLite.openDatabase({ name: "movi", createFromLocation: "~movies.db" });
 
 export const addFavorites = (obj, dispatch, addFavoriteList) => {
    let data = [];

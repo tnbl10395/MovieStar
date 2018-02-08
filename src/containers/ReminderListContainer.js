@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { ReminderList } from '../templates/ReminderList';
 
 const mapStateToProps = (state) => ({
-    data1: state.popularReducer.reminder,
+    data: state.popularReducer.reminder,
 });
 
 const mapDispatchToProps = (dispatch) => ({
