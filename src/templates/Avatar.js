@@ -6,8 +6,21 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
     <View>
         <View style={{ alignItems: 'center' }}>
             <TouchableOpacity
-                onPress={()=>ImagePicker.launchImageLibrary(options, (response)  => {
-                    // Same code as in above section!
+                onPress={()=>ImagePicker.showImagePicker(options, (response) => {
+                    console.log('Response = ', response);
+                  
+                    if (response.didCancel) {
+                      console.log('User cancelled image picker');
+                    }
+                    else if (response.error) {
+                      console.log('ImagePicker Error: ', response.error);
+                    }
+                    else if (response.customButton) {
+                      console.log('User tapped custom button: ', response.customButton);
+                    }
+                    else {
+                      let source = { uri: response.uri };
+                    }
                   })}>
                 <Image
                     source={require('../images/user.png')}
@@ -63,6 +76,14 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
         </View>
     </View>
 );
+
+var options = {
+    title: 'Select Avatar',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images'
+    }
+  };
 
 const changeMale = (sex, changeSex) => {
     if (sex == false) {
