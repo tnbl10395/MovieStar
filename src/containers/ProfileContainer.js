@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ProfileComponent from '../components/ProfileComponent';
-import { goProfile } from '../actions/PopularActions';
+import { goProfile, changeBirthday } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
     status: state.popularReducer.goProfile,
@@ -10,6 +10,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     goHome: () => {
         dispatch(goProfile());
+    },
+    changeBirthday: (birthday) => {
+        dispatch(changeBirthday(birthday))
     }
 });
 

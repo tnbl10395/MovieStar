@@ -16,6 +16,7 @@ class MoviesComponent extends React.Component {
         this.props.loadTopRated();
         this.props.loadUpcoming();
         this.props.loadReminder();
+        this.props.loadProfile();
     }
 
     render() {

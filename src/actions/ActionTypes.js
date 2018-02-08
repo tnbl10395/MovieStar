@@ -23,4 +23,10 @@ export const LOAD_REMINDER = 'LOAD_REMINDER';
 export const REMOVE_REMINDER = 'REMOVE_REMINDER';
 //profile
 export const LOAD_PROFILE = 'LOAD_PROFILE';
-export const GO_PROFILE = 'GO_PROFILE'
+export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const GO_PROFILE = 'GO_PROFILE';
+export const CHANGE_NAME = 'CHANGE_NAME';
+export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
+export const CHANGE_EMAIL = 'CHANGE_EMAIL';
+export const CHANGE_SEX = 'CHANGE_SEX';
+export const CHANGE_AVATAR = 'CHANGE_AVATAR';

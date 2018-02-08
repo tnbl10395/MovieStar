@@ -8,14 +8,8 @@ import { getAllReminder } from '../localDatabase/localdatabase';
 
 async function getProfile(dispatch,loadProfile) {
     try {
-        var array=[];
-        var keys = await AsyncStorage.getAllKeys();
-        await AsyncStorage.multiGet(keys,(err,stores)=>{
-            stores.forEach(element=>{
-                array.push(element[1]);
-            })
-            dispatch(loadProfile(array))
-        })
+        var value = await AsyncStorage.getItem('profile');
+        dispatch(loadProfile(JSON.parse(value)));
     } catch (error) {
         alert(JSON.stringify(error))
     }

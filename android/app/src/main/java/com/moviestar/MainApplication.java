@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.pgsqlite.SQLitePluginPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.imagepicker.ImagePickerPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ImagePickerPackage(),
           new SQLitePluginPackage(),
           new ReactNativePushNotificationPackage()
       );
