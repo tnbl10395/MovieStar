@@ -95,7 +95,7 @@ export const addReminderList = (obj, dispatch, addReminder) => {
                for (var i = 0; i < results.rows.length; i++) {
                   data.push(results.rows.item(i));
                }
-               dispatch(addReminder(obj, data));
+               dispatch(addReminder(data));
             }, (error) => {
                alert(JSON.stringify(error))
             });
@@ -134,7 +134,7 @@ export const removeReminderList = (obj, dispatch, removeReminder) => {
                data.push(results.rows.item(i));
             }
             // alert(JSON.stringify(data))
-            dispatch(removeReminder(obj, data));
+            dispatch(removeReminder(data));
          }, (error) => {
             alert(JSON.stringify(error))
          });

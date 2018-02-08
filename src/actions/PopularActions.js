@@ -16,7 +16,11 @@ import {
     REMOVE_REMINDER,
     LOAD_PROFILE,
     EDIT_PROFILE,
-    GO_PROFILE
+    GO_PROFILE,
+    CHANGE_NAME,
+    CHANGE_SEX,
+    CHANGE_EMAIL,
+    CHANGE_BIRTHDAY
 } from '../actions/ActionTypes';
 
 export const loadDataPopular = (loadData) => {
@@ -117,10 +121,9 @@ export const loadReminder = (reminderList) => {
     }
 }
 
-export const removeReminder = (object, reminderList) => {
+export const removeReminder = (reminderList) => {
     return {
         type: REMOVE_REMINDER,
-        object,
         reminderList
     }
 }
@@ -135,5 +138,33 @@ export const loadProfile = (loadData) => {
 export const goProfile = () => {
     return {
         type: GO_PROFILE,
+    }
+}
+
+export const changeName = (name) => {
+    return {
+        type: CHANGE_NAME,
+        name
+    }
+}
+
+export const changeBirthday = (birthday) => {
+    return {
+        type: CHANGE_BIRTHDAY,
+        birthday
+    }
+}
+
+export const changeEmail = (email) => {
+    return {
+        type: CHANGE_EMAIL,
+        email
+    }
+}
+
+export const changeSex = (sex) => {
+    return {
+        type: CHANGE_SEX,
+        sex
     }
 }
