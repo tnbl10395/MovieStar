@@ -5,28 +5,38 @@ import ImagePicker from 'react-native-image-picker';
 export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSex, birthday, email, changeEmail, avatar, changeAvatar }) => (
     <View>
         <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity
-                onPress={() => ImagePicker.showImagePicker(options, (response) => {
-                    console.log('Response = ', response);
-                    if (response.didCancel) {
-                        console.log('User cancelled image picker');
-                    }
-                    else if (response.error) {
-                        console.log('ImagePicker Error: ', response.error);
-                    }
-                    else if (response.customButton) {
-                        console.log('User tapped custom button: ', response.customButton);
-                    }
-                    else {
-                        let source = { uri: response.uri };
-                        changeAvatar(source)
-                    }
-                })}>
-                <Image
-                    source={avatar==''?require('../images/user.png'):avatar}
-                    style={{ width: 120, height: 120, borderRadius: 120 }}
-                />
-            </TouchableOpacity>
+            {
+                !status ?
+                    <Image
+                        source={data.avatar.uri == null ? require('../images/user.png') : { uri: data.avatar.uri }}
+                        style={{ width: 120, height: 120, borderRadius: 120 }}
+                    />
+                    :
+                    <TouchableOpacity
+                        onPress={() => ImagePicker.showImagePicker(options, (response) => {
+                            console.log('Response = ', response);
+                            if (response.didCancel) {
+                                console.log('User cancelled image picker');
+                            }
+                            else if (response.error) {
+                                console.log('ImagePicker Error: ', response.error);
+                            }
+                            else if (response.customButton) {
+                                console.log('User tapped custom button: ', response.customButton);
+                            }
+                            else {
+                                let source = { uri: response.uri };
+                                changeAvatar(source)
+                            }
+                        })}>
+                        <Image
+                            source={avatar.uri == null ? require('../images/user.png') : { uri: avatar.uri }}
+                            style={{ width: 120, height: 120, borderRadius: 120 }}
+                        />
+                    </TouchableOpacity>
+
+            }
+
             {
                 !status ?
                     <Text style={{ marginTop: 15, color: 'black', fontWeight: 'bold', fontSize: 24 }}>{data.name}</Text>

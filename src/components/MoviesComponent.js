@@ -8,6 +8,9 @@ class MoviesComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        // this.state={
+        //     refreshing:false
+        // }
     }
 
     componentDidMount() {
@@ -19,11 +22,20 @@ class MoviesComponent extends React.Component {
         this.props.loadProfile();
     }
 
+    // onRefresh(){
+    //     this.setState({
+    //         refreshing:true,
+    //     })
+    // }
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <HeaderContainer nav={this.props.navigation} />
+                <Text>{JSON.stringify(this.props.data1)}...{this.props.data2.a}</Text>
                 <FlatList
+                    // onRefresh={() => this.onRefresh()}
+                    // refreshing={this.state.refreshing}
                     data={this.props.data}
                     renderItem={({ item }) => ItemList(item, this.props.list, this.props.navigation)}
                     numColumns={this.props.list ? 1 : 2}

@@ -33,6 +33,8 @@ const initialState = {
     dataUpcoming: [],
     list: true,
     favoriteList: [],
+    amountFavorite: 0,
+    statusFavorite: false,
     star: [],
     titleList: ["Popular", "Now Playing", "Top Rated", "Upcoming"],
     title: "Popular",
@@ -40,13 +42,24 @@ const initialState = {
     detail: [],
     credit: [],
     reminder: [],
-    profile: [],
+    profile: {
+        avatar: '',
+        name: '',
+        birthday: '',
+        email: '',
+        sex: true,
+    },
     avatar: '',
     goProfile: false,
     name: '',
     birthday: '',
     email: '',
-    sex: true
+    sex: true,
+    o: {a:'ahihi'},
+    a:[
+        {c:1,d:2},
+        {c:5,d:6},
+    ]
 }
 
 const popularReducer = (state = initialState, action) => {
@@ -56,11 +69,9 @@ const popularReducer = (state = initialState, action) => {
             var arrayFavorite = state.star;
             arrayData.forEach(element_1 => {
                 if (arrayFavorite.indexOf(element_1.id) == -1) {
-                    // Object.assign(element_1, { check: require('../images/star-outline.png') })
                     Object.assign(element_1, { check: 0 })
                 } else {
                     Object.assign(element_1, { check: 1 })
-                    // Object.assign(element_1, { check: require('../images/star.png') })
                 }
             });
             return {
@@ -74,11 +85,9 @@ const popularReducer = (state = initialState, action) => {
             var arrayFavorite = state.star;
             arrayData.forEach(element_1 => {
                 if (arrayFavorite.indexOf(element_1.id) == -1) {
-                    // Object.assign(element_1, { check: require('../images/star-outline.png') })
                     Object.assign(element_1, { check: 0 })
                 } else {
                     Object.assign(element_1, { check: 1 })
-                    // Object.assign(element_1, { check: require('../images/star.png') })
                 }
             });
             return {
@@ -91,11 +100,9 @@ const popularReducer = (state = initialState, action) => {
             var arrayFavorite = state.star;
             arrayData.forEach(element_1 => {
                 if (arrayFavorite.indexOf(element_1.id) == -1) {
-                    // Object.assign(element_1, { check: require('../images/star-outline.png') })
                     Object.assign(element_1, { check: 0 })
                 } else {
                     Object.assign(element_1, { check: 1 })
-                    // Object.assign(element_1, { check: require('../images/star.png') })
                 }
             });
             return {
@@ -108,11 +115,9 @@ const popularReducer = (state = initialState, action) => {
             var arrayFavorite = state.star;
             arrayData.forEach(element_1 => {
                 if (arrayFavorite.indexOf(element_1.id) == -1) {
-                    // Object.assign(element_1, { check: require('../images/star-outline.png') })
                     Object.assign(element_1, { check: 0 })
                 } else {
                     Object.assign(element_1, { check: 1 })
-                    // Object.assign(element_1, { check: require('../images/star.png') })
                 }
             });
             return {
@@ -129,38 +134,43 @@ const popularReducer = (state = initialState, action) => {
         case ADD_FAVORITES:
             var getStar = state.star;
             var getData = state.data;
-            getData.forEach(element => {
-                if (element.id == action.object.id) {
-                    Object.assign(element, { check: 1 });
-                    if (getStar.indexOf(action.object.id) == -1) {
-                        getStar.push(action.object.id)
-                    }
-                }
-            });
+            Object.assign(getData, action.object)
+            // getData.forEach(element => {
+            //     if (element.id == action.object.id) {
+            //         Object.assign(element, { check: 1 });
+            Object.assign(state.a,{c:1,d:5})
+            state.o.a = 'ahihihihihi'
+             if (getStar.indexOf(action.object.id) == -1) {
+                getStar.push(action.object.id)
+            }
+            // }
+            // });
             return {
                 ...state,
                 favoriteList: action.favoriteList,
                 data: getData,
-                star: getStar
+                star: getStar,
+                amountFavorite: action.favoriteList.length,
             }
 
         case REMOVE_FAVORITE:
             var getData = state.data;
             var getStar = state.star;
-            getData.forEach(element => {
-                if (element.id == action.object.id) {
-                    Object.assign(element, { check: 0 });
-                    var index = getStar.indexOf(action.object.id);
-                    if (index != -1) {
-                        getStar.splice(action.object.id, 1)
-                    }
-                }
-            });
+            // getData.forEach(element => {
+            //     if (element.id == action.object.id) {
+            Object.assign(getData, action.object);
+            var index = getStar.indexOf(action.object.id);
+            if (index != -1) {
+                getStar.splice(action.object.id, 1)
+            }
+            // }
+            // });
             return {
                 ...state,
                 favoriteList: action.favoriteList,
                 data: getData,
-                star: getStar
+                star: getStar,
+                amountFavorite: action.favoriteList.length
             }
 
         case GET_FAVORITES:
@@ -169,10 +179,14 @@ const popularReducer = (state = initialState, action) => {
             array.forEach(element => {
                 checkStar.push(element.id);
             });
+            // if (action.list.length > 0) {
+            //     state.statusFavorite = true
+            // }
             return {
                 ...state,
                 favoriteList: action.list,
                 star: checkStar,
+                amountFavorite: action.list.length
             }
 
         case CHANGE_TITLE:
@@ -236,10 +250,17 @@ const popularReducer = (state = initialState, action) => {
             }
 
         case LOAD_PROFILE:
-            return {
-                ...state,
-                profile: action.loadData,
+            if (action.loadData == null) {
+                return {
+                    ...state
+                }
+            } else {
+                return {
+                    ...state,
+                    profile: action.loadData,
+                }
             }
+
 
         case EDIT_PROFILE:
             return {
@@ -251,6 +272,7 @@ const popularReducer = (state = initialState, action) => {
             return {
                 ...state,
                 goProfile: !state.goProfile,
+                avatar: state.profile.avatar,
                 name: state.profile.name,
                 birthday: state.profile.birthday,
                 email: state.profile.email,

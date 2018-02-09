@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { DoneButton } from '../templates/DoneButton';
 import { AsyncStorage } from 'react-native';
-import { editProfile } from '../actions/PopularActions';
+import { editProfile, goProfile } from '../actions/PopularActions';
 
 async function editProfileInStore(object, dispatch, editProfile) {
     try {
@@ -24,7 +24,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     editProfile: (object) => {
         editProfileInStore(object, dispatch, editProfile)
-    }
+    },
+    goHome: () => {
+        dispatch(goProfile());
+    },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoneButton);

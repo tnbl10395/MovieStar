@@ -7,7 +7,7 @@ class SettingsComponent extends React.Component {
         tabBarIcon: ({tintColor}) => (
             <Image 
                 source={require('../images/settings.png')}
-                style={[{tintColor:tintColor},{width:23,height:23}]}
+                // style={[{tintColor:tintColor},{width:23,height:23}]}
                 />
         ),
     }

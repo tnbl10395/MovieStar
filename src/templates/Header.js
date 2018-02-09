@@ -17,7 +17,7 @@ export const Header = ({list, changeShowList, changeTitle, title, nav}) => (
             <TouchableWithoutFeedback
                 onPress={()=>changeShowList()}>
                 {
-                    list?
+                    !list?
                     <Image
                         source={require('../images/view-list.png')}
                         style={{width:40,height:40,right:25,top:5}}

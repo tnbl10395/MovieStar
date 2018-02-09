@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { DetailMovie } from '../templates/DetailMovie';
 import { CreditMovie } from '../templates/CreditMovie';
+import { HeaderDetail } from '../templates/HeaderDetail';
 import { View, Text, Alert, Button } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
@@ -49,6 +50,7 @@ class DetailComponent extends React.Component{
     render(){
         return(
             <View style={{flex:1}}>
+                <HeaderDetail navigation={this.props.navigation} title={this.props.dataDetail.title}/>   
                 <DetailMovie detail={this.props.dataDetail} item={this.props.navigation.state.params.name} onPress={this._showDateTimePicker}/>
                 <CreditMovie credit={this.props.dataCredit.cast}/>
                 <DateTimePicker

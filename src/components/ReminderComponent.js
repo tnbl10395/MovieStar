@@ -7,10 +7,6 @@ class ReminderComponent extends React.Component {
         super(props);
     }
 
-    // componentDidMount(){
-    //     this.props.loadReminder();
-    // }
-
     render() {
         return (
             <View style={{ flex: 1, backgroundColor:'white' }}>

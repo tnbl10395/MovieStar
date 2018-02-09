@@ -17,6 +17,7 @@ class FavoriteButtonComponent extends Component {
             if (this.props.item.check == 0) {
                 this.setState({star:!this.props.item.check});
                 this.props.addFavorite(this.props.item);
+
             } else if(this.props.item.check == 1){
                 Alert.alert(
                     "Are you sure you want to unfavorate this movie?",
@@ -31,8 +32,8 @@ class FavoriteButtonComponent extends Component {
         }
 
         const remove = () => {
-            this.props.removeFavorite(this.props.item);
             this.setState({star:!this.props.item.check});
+            this.props.removeFavorite(this.props.item);
         }
 
         return (

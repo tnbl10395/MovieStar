@@ -11,7 +11,9 @@ import ReminderContainer from '../containers/ReminderContainer';
 import Avatar from '../containers/AvatarContainer';
 import ReminderList from '../containers/ReminderListContainer';
 import EditButton from '../containers/EditButtonContainer';
+import NotificationFavorite from '../containers/NotificationContainer';
 import { connect } from 'react-redux';
+import NotificationContainer from '../containers/NotificationContainer';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,10 +27,7 @@ export const MoviesStack = StackNavigator({
     Detail: {
         screen: DetailContainer,
         navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#2980b9',
-            },
-            headerTintColor: 'white'
+            header: null
         }
     }
 })
@@ -43,10 +42,7 @@ export const FavoritesStack = StackNavigator({
     Detail: {
         screen: DetailContainer,
         navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#2980b9',
-            },
-            headerTintColor: 'white'
+            header: null
         }
     }
 })
@@ -60,7 +56,7 @@ export const TabComponent = TabNavigator(
                 tabBarIcon: ({ tintColor }) => (
                     <Image
                         source={require('../images/home.png')}
-                        style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
+                        // style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
                     />
                 ),
             }
@@ -70,12 +66,16 @@ export const TabComponent = TabNavigator(
             navigationOptions: {
                 tabBarLabel: 'Favorites',
                 tabBarIcon: ({ tintColor }) => (
-                    <Image
-                        source={require('../images/heart.png')}
-                        style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
-                    />
+                    <View>
+                        <Image
+                            source={require('../images/heart.png')}
+                            // style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
+                        />
+                        <NotificationContainer />
+                    </View>
                 ),
             }
+
         },
         Settings: {
             screen: SettingsComponent
@@ -90,7 +90,12 @@ export const TabComponent = TabNavigator(
         tabBarOptions: {
             style: {
                 backgroundColor: '#2980b9',
-                top: '2%'
+                top: '2%',
+            },
+            iconStyle:{
+                width:'100%',
+                height:40,
+                top: '2%',
             },
             renderIndicator: () => null,
             showIcon: true,

@@ -5,16 +5,6 @@ import HeaderFavoriteContainer from '../containers/HeaderFavoriteContainer';
 import SearchButtonContainer from '../containers/SearchButtonContainer';
 
 class FavoritesComponent extends React.Component {
-    // static navigationOptions = {
-    //     tabBarLabel: 'Favorites',
-    //     tabBarIcon: ({ tintColor }) => (
-    //         <Image
-    //             source={require('../images/heart.png')}
-    //             style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
-    //         />
-    //     ),
-    // }
-
     constructor(props) {
         super(props)
     }
@@ -26,7 +16,7 @@ class FavoritesComponent extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
-                <HeaderFavoriteContainer />
+                <HeaderFavoriteContainer navigation={this.props.navigation}/>
                 <SearchButtonContainer />
                 <FlatList
                     data={this.props.favoriteData}
