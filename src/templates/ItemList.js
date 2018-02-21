@@ -6,13 +6,13 @@ import DetailButtonContainer from '../containers/DetailButtonContainer';
 
 const { width, height } = Dimensions.get('window');
 
-export const ItemList = (item, list, navigation) => (
-    list ? List(item, navigation) : Grid(item,navigation)
+export const ItemList = (item, list, navigation,favorite) => (
+    list ? List(item, navigation,favorite) : Grid(item,navigation)
 
 );
 
-export const ItemFavoriteList = (item,navigation) => (
-    List(item,navigation)
+export const ItemFavoriteList = (item,navigation,favorite) => (
+    List(item,navigation,favorite)
 );
 
 const Grid = (item,navigation) => (
@@ -29,11 +29,11 @@ const Grid = (item,navigation) => (
 
 );
 
-const List = (item, navigation) => (
+const List = (item, navigation, favorite) => (
     <View style={{ flexDirection: 'column', borderTopWidth: 0.5, height: 250 }} key={item.id}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black', marginLeft: 5 }}>{item.title}</Text>
-            <FavoriteButtonContainer item={item} />
+            <FavoriteButtonContainer item={item} favorite={favorite}/>
         </View>
         <TouchableWithoutFeedback
             onPress={() => goDetailComponent(navigation, item)}>

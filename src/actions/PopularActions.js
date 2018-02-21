@@ -41,7 +41,7 @@ export const addFavoriteList = (object, favoriteList) => {
     return {
         type: ADD_FAVORITES,
         object,
-        favoriteList
+        favoriteList,
     }
 }
 
@@ -52,11 +52,12 @@ export const getFavoriteList = (list) => {
     }
 }
 
-export const removeFavorite = (object, favoriteList) => {
+export const removeFavorite = (object, favoriteList, checkFavorite) => {
     return {
         type: REMOVE_FAVORITE,
         object,
-        favoriteList
+        favoriteList,
+        checkFavorite
     }
 }
 

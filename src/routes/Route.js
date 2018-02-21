@@ -56,7 +56,6 @@ export const TabComponent = TabNavigator(
                 tabBarIcon: ({ tintColor }) => (
                     <Image
                         source={require('../images/home.png')}
-                        // style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
                     />
                 ),
             }
@@ -69,7 +68,6 @@ export const TabComponent = TabNavigator(
                     <View>
                         <Image
                             source={require('../images/heart.png')}
-                            // style={[{ tintColor: tintColor }, { width: 23, height: 23 }]}
                         />
                         <NotificationContainer />
                     </View>
@@ -133,14 +131,3 @@ export const DrawComponent = DrawerNavigator(
         ),
     }
 );
-
-
-
-// const mapStateToProps = (state) => ({
-//     nav: state.nav
-// })
-
-// const AppWithNavigationState = ({dispatch,nav}) => (
-//     <TabComponent navigation={addNavigationHelpers({dispatch,state:nav})}/>
-// );
-// export default connect (mapStateToProps)(AppWithNavigationState);

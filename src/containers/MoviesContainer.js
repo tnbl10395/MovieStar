@@ -17,8 +17,6 @@ async function getProfile(dispatch,loadProfile) {
 
 const mapStateToProps = (state) => ({
     data: state.popularReducer.data,
-    data1: state.popularReducer.a,
-    data2: state.popularReducer.o,
     list: state.popularReducer.list,
 });
 

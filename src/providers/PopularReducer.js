@@ -55,11 +55,6 @@ const initialState = {
     birthday: '',
     email: '',
     sex: true,
-    o: {a:'ahihi'},
-    a:[
-        {c:1,d:2},
-        {c:5,d:6},
-    ]
 }
 
 const popularReducer = (state = initialState, action) => {
@@ -134,17 +129,14 @@ const popularReducer = (state = initialState, action) => {
         case ADD_FAVORITES:
             var getStar = state.star;
             var getData = state.data;
-            Object.assign(getData, action.object)
-            // getData.forEach(element => {
-            //     if (element.id == action.object.id) {
-            //         Object.assign(element, { check: 1 });
-            Object.assign(state.a,{c:1,d:5})
-            state.o.a = 'ahihihihihi'
-             if (getStar.indexOf(action.object.id) == -1) {
+            getData.forEach(element => {
+                if (element.id == action.object.id) {
+                    Object.assign(element, action.object);
+                }
+            });
+            if (getStar.indexOf(action.object.id) == -1) {
                 getStar.push(action.object.id)
             }
-            // }
-            // });
             return {
                 ...state,
                 favoriteList: action.favoriteList,
@@ -154,17 +146,20 @@ const popularReducer = (state = initialState, action) => {
             }
 
         case REMOVE_FAVORITE:
-            var getData = state.data;
             var getStar = state.star;
-            // getData.forEach(element => {
-            //     if (element.id == action.object.id) {
-            Object.assign(getData, action.object);
-            var index = getStar.indexOf(action.object.id);
-            if (index != -1) {
-                getStar.splice(action.object.id, 1)
+            if(action.checkFavorite==0){
+                var getData = state.data;
+                getData.forEach(element => {
+                    if (element.id == action.object.id) {
+                        Object.assign(element, action.object);
+                    }
+                });
+            }else{
+                var getData = [];
             }
-            // }
-            // });
+            if (getStar.indexOf(action.object.id) != -1) {
+                getStar.splice(getStar.indexOf(action.object.id), 1);
+            }
             return {
                 ...state,
                 favoriteList: action.favoriteList,
@@ -179,9 +174,6 @@ const popularReducer = (state = initialState, action) => {
             array.forEach(element => {
                 checkStar.push(element.id);
             });
-            // if (action.list.length > 0) {
-            //     state.statusFavorite = true
-            // }
             return {
                 ...state,
                 favoriteList: action.list,

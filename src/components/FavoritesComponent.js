@@ -14,13 +14,16 @@ class FavoritesComponent extends React.Component {
     }
 
     render() {
+
+        const favorite = 1;
+
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <HeaderFavoriteContainer navigation={this.props.navigation}/>
                 <SearchButtonContainer />
                 <FlatList
                     data={this.props.favoriteData}
-                    renderItem={({ item }) => ItemFavoriteList(item,this.props.navigation)}
+                    renderItem={({ item }) => ItemFavoriteList(item,this.props.navigation,favorite)}
                     keyExtractor={(item, index) => item.id}
                 />
             </View>

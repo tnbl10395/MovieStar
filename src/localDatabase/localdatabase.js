@@ -14,7 +14,7 @@ export const addFavorites = (obj, dispatch, addFavoriteList) => {
         obj.vote_average,
         1
     ];
-    Object.assign(obj, { check: 1 })
+    Object.assign(obj, { check: 1 });
     db.transaction((tx) => {
         var query1 = 'insert into favorites values (?,?,?,?,?,?,?)';
         var query2 = 'select * from favorites';
@@ -36,9 +36,9 @@ export const addFavorites = (obj, dispatch, addFavoriteList) => {
     });
 }
 
-export const removeFavorites = (obj, dispatch, removeFavorite) => {
+export const removeFavorites = (obj, dispatch, removeFavorite, checkFavorite) => {
     let data = [];
-    Object.assign(obj, { check: 0 })
+    Object.assign(obj, { check: 0 });
     db.transaction((tx) => {
         var query1 = 'delete from favorites where id=?';
         var query2 = 'select * from favorites';
@@ -47,7 +47,7 @@ export const removeFavorites = (obj, dispatch, removeFavorite) => {
                 for (var i = 0; i < results.rows.length; i++) {
                     data.push(results.rows.item(i));
                 }
-                dispatch(removeFavorite(obj, data));
+                dispatch(removeFavorite(obj, data, checkFavorite));
             }, (error) => {
                 alert(JSON.stringify(error))
             });

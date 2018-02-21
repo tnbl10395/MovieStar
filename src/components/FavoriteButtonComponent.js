@@ -33,7 +33,8 @@ class FavoriteButtonComponent extends Component {
 
         const remove = () => {
             this.setState({star:!this.props.item.check});
-            this.props.removeFavorite(this.props.item);
+            this.props.removeFavorite(this.props.item,this.props.favorite);
+            // this.props.loadPopular();
         }
 
         return (
