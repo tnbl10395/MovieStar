@@ -1,40 +1,38 @@
 import React from 'react';
-import { View, Text, Image, TouchableNativeFeedback,Dimensions, Button, ScrollView  } from 'react-native';
+import { View, Text, Image, TouchableNativeFeedback, ScrollView  } from 'react-native';
 import FavoriteButtonContainer from '../containers/FavoriteButtonContainer';
 import { infoBox } from '../templates/ItemList';
-// import DateTimePicker from 'react-native-modal-datetime-picker';
+import { DetailMovieStyle } from '../style/Style';
 
-const {width,height} = Dimensions.get('window');
 
 export const DetailMovie = ({detail,item,onPress}) => (
-    <View style={{flex:0.6,backgroundColor:'white'}}>
-        <View style={{flex:0.2,flexDirection:'row'}}>
-            <View style={{justifyContent:'center',margin:10}}>
+    <View style={DetailMovieStyle.overview}>
+        <View style={DetailMovieStyle.header}>
+            <View style={DetailMovieStyle.viewBtnFavorite}>
                 <FavoriteButtonContainer item={item}/>
             </View>
             <View>
                 {infoBox(detail)}
             </View>
         </View>
-        <View style={{flex:0.8,flexDirection:'row'}}>
-            <View style={{flex:0.4}}>
+        <View style={DetailMovieStyle.body}>
+            <View style={DetailMovieStyle.viewPoster}>
                 <Image 
                     source={{uri:'http://image.tmdb.org/t/p/w185'+detail.poster_path}} 
-                    style={{height:height*0.25, margin:10}}
+                    style={DetailMovieStyle.poster}
                 />
                 <TouchableNativeFeedback onPress={onPress}>
-                    <View style={{backgroundColor:'#6c5ce7',borderRadius:5, margin:10}}>
-                        <Text style={{padding:5,color:'white',textAlign:'center'}}>REMINDER</Text>
+                    <View style={DetailMovieStyle.viewBtnReminder}>
+                        <Text style={DetailMovieStyle.textBtnReminder}>REMINDER</Text>
                     </View>
                 </TouchableNativeFeedback>
             </View>
-            <View style={{flex:0.6}}>
+            <View style={DetailMovieStyle.viewContent}>
                 <ScrollView>
-                    <Text style={{ color: 'red' }}>Overview:</Text>
-                    <Text style={{ color: 'black' }}>{item.overview}</Text>
+                    <Text style={DetailMovieStyle.titleContent}>Overview:</Text>
+                    <Text style={DetailMovieStyle.textContent}>{item.overview}</Text>
                 </ScrollView>
             </View>
         </View>
     </View>
 );
-

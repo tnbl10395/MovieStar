@@ -21,8 +21,16 @@ import {
     CHANGE_SEX,
     CHANGE_EMAIL,
     CHANGE_BIRTHDAY,
-    CHANGE_AVATAR
+    CHANGE_AVATAR,
+    LOAD_DATA_DETAIL_MOVIE,
+    LOAD_DATA_DETAIL_FAVORITE,
+    LOAD_DATA_CREDIT_MOVIE,
+    LOAD_DATA_CREDIT_FAVORITE,
+    SEARCH_DATA,
+    INPUT_SEARCH
 } from '../actions/ActionTypes';
+
+// movies
 
 export const loadDataPopular = (loadData) => {
     return {
@@ -34,30 +42,6 @@ export const loadDataPopular = (loadData) => {
 export const changeShowListPopular = () => {
     return {
         type: CHANGE_SHOW_LIST
-    }
-}
-
-export const addFavoriteList = (object, favoriteList) => {
-    return {
-        type: ADD_FAVORITES,
-        object,
-        favoriteList,
-    }
-}
-
-export const getFavoriteList = (list) => {
-    return {
-        type: GET_FAVORITES,
-        list
-    }
-}
-
-export const removeFavorite = (object, favoriteList, checkFavorite) => {
-    return {
-        type: REMOVE_FAVORITE,
-        object,
-        favoriteList,
-        checkFavorite
     }
 }
 
@@ -89,25 +73,37 @@ export const loadDataUpcoming = (loadData) => {
     }
 }
 
-export const changeSearchButton = () => {
-    return {
-        type: CHANGE_SEARCH_BUTTON
-    }
-}
+// detail
 
-export const loadDataDetail = (loadData) => {
+export const loadDataDetailMovie = (loadData) => {
     return {
-        type: LOAD_DATA_DETAIL,
+        type: LOAD_DATA_DETAIL_MOVIE,
         loadData
     }
 }
 
-export const loadDataCredit = (loadData) => {
+export const loadDataDetailFavorite = (loadData) => {
     return {
-        type: LOAD_DATA_CREDIT,
+        type: LOAD_DATA_DETAIL_FAVORITE,
         loadData
     }
 }
+
+export const loadDataCreditMovie = (loadData) => {
+    return {
+        type: LOAD_DATA_CREDIT_MOVIE,
+        loadData
+    }
+}
+
+export const loadDataCreditFavorite = (loadData) => {
+    return {
+        type: LOAD_DATA_CREDIT_FAVORITE,
+        loadData
+    }
+}
+
+// reminder
 
 export const addReminder = (reminderList) => {
     return {
@@ -129,6 +125,8 @@ export const removeReminder = (reminderList) => {
         reminderList
     }
 }
+
+// profile
 
 export const loadProfile = (loadData) => {
     return {
@@ -182,5 +180,51 @@ export const changeAvatar = (avatar) => {
     return {
         type: CHANGE_AVATAR,
         avatar
+    }
+}
+
+// favorites
+
+export const addFavoriteList = (object, favoriteList) => {
+    return {
+        type: ADD_FAVORITES,
+        object,
+        favoriteList,
+    }
+}
+
+export const getFavoriteList = (list) => {
+    return {
+        type: GET_FAVORITES,
+        list
+    }
+}
+
+export const removeFavorite = (object, favoriteList, checkFavorite) => {
+    return {
+        type: REMOVE_FAVORITE,
+        object,
+        favoriteList,
+        checkFavorite
+    }
+}
+
+export const changeSearchButton = () => {
+    return {
+        type: CHANGE_SEARCH_BUTTON
+    }
+}
+
+export const inputDataSearch = (str) => {
+    return {
+        type: INPUT_SEARCH,
+        str
+    }
+}
+
+export const searchFavorite = (loadData) => {
+    return {
+        type: SEARCH_DATA,
+        loadData
     }
 }

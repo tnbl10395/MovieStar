@@ -1,11 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
+import { DoneBtnStyle } from '../style/Style';
 
 export const DoneButton = ({ avatar, name, birthday, email, sex, editProfile, navigation, goHome }) => (
     <TouchableOpacity
         onPress={() => edit(avatar, name, birthday, email, sex, editProfile, navigation, goHome)}>
-        <View style={{ backgroundColor: '#2196F3', width: 100, borderRadius: 5 }}>
-            <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 20, padding: 5 }}>DONE</Text>
+        <View style={DoneBtnStyle.viewBtn}>
+            <Text style={DoneBtnStyle.textBtn}>DONE</Text>
         </View>
     </TouchableOpacity>
 );

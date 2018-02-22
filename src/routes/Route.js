@@ -6,7 +6,8 @@ import FavoritesContainer from '../containers/FavoritesContainer';
 import SettingsComponent from '../components/SettingsComponent';
 import AboutComponent from '../components/AboutComponent';
 import ProfileContainer from '../containers/ProfileContainer';
-import DetailContainer from '../containers/DetailContainer';
+import DetailMoviesContainer from '../containers/DetailMoviesContainer';
+import DetailFavoritesContainer from '../containers/DetailFavoritesContainer';
 import ReminderContainer from '../containers/ReminderContainer';
 import Avatar from '../containers/AvatarContainer';
 import ReminderList from '../containers/ReminderListContainer';
@@ -25,7 +26,7 @@ export const MoviesStack = StackNavigator({
         }
     },
     Detail: {
-        screen: DetailContainer,
+        screen: DetailMoviesContainer,
         navigationOptions: {
             header: null
         }
@@ -40,7 +41,7 @@ export const FavoritesStack = StackNavigator({
         }
     },
     Detail: {
-        screen: DetailContainer,
+        screen: DetailFavoritesContainer,
         navigationOptions: {
             header: null
         }

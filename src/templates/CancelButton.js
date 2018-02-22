@@ -1,11 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, View, Text } from 'react-native';
+import { CancelBtnStyle } from '../style/Style';
 
 export const CancelButton = ({navigation, goHome}) => (
     <TouchableOpacity
         onPress={()=>home(navigation,goHome)}>
-        <View style={{backgroundColor:'#4DB6AC',width:100,borderRadius:5}}>
-            <Text style={{color:'white',textAlign:'center',fontWeight:'bold',fontSize:20,padding:5}}>CANCEL</Text>
+        <View style={CancelBtnStyle.viewBtn}>
+            <Text style={CancelBtnStyle.textBtn}>CANCEL</Text>
         </View>
     </TouchableOpacity>
 );

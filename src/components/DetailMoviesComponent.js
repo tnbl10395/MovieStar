@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { DetailMovie } from '../templates/DetailMovie';
 import { CreditMovie } from '../templates/CreditMovie';
-import { HeaderDetail } from '../templates/HeaderDetail';
+import { HeaderDetailMovie } from '../templates/HeaderDetail';
 import { View, Text, Alert, Button } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-class DetailComponent extends React.Component{
-    constructor(props){
+class DetailMoviesComponent extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {
             isDateTimePickerVisible: false,
@@ -16,13 +16,14 @@ class DetailComponent extends React.Component{
     _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
 
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
-  
+
     _handleDatePicked = (fulldate) => {
         var d = new Date(fulldate);
         var data = this.props.dataDetail;
-        var date = d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate();
-        var time = d.getHours()+':'+d.getMinutes();
-        var str = data.title+' - '+time+' - '+data.vote_average+'/10.0';
+        var month = d.getMonth() + 1;
+        var date = d.getFullYear() + '-' + month + '-' + d.getDate();
+        var time = d.getHours() + ':' + d.getMinutes();
+        var str = data.title + ' - ' + time + ' - ' + data.vote_average + '/10.0';
         var obj = {
             id: data.id,
             title: data.title,
@@ -36,7 +37,7 @@ class DetailComponent extends React.Component{
             'Reminder',
             str,
             [
-                {text:'OK', onPress:()=>this.props.addReminder(obj)}
+                { text: 'OK', onPress: () => this.props.addReminder(obj) }
             ]
         )
         this._hideDateTimePicker();
@@ -47,21 +48,22 @@ class DetailComponent extends React.Component{
         this.props.loadCredit(this.props.navigation.state.params.name.id);
     }
 
-    render(){
-        return(
-            <View style={{flex:1}}>
-                <HeaderDetail navigation={this.props.navigation} title={this.props.dataDetail.title}/>   
-                <DetailMovie detail={this.props.dataDetail} item={this.props.navigation.state.params.name} onPress={this._showDateTimePicker}/>
-                <CreditMovie credit={this.props.dataCredit.cast}/>
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                <HeaderDetailMovie navigation={this.props.navigation} title={this.props.dataDetail.title} />
+                <DetailMovie detail={this.props.dataDetail} item={this.props.navigation.state.params.name} onPress={this._showDateTimePicker} />
+                <CreditMovie credit={this.props.dataCredit.cast} />
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
                     onConfirm={this._handleDatePicked}
                     onCancel={this._hideDateTimePicker}
                     mode='datetime'
-                    />
+                    is24Hour={false}
+                />
             </View>
         );
     }
 }
 
-export default DetailComponent;
+export default DetailMoviesComponent;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, Text, Alert, Button } from 'react-native';
 import Swipeout from 'react-native-swipeout';
+import { ItemReminderStyle } from '../style/Style';
 
 export const ItemReminder = (item, removeReminder) => (
     <Swipeout
@@ -20,21 +21,20 @@ export const ItemReminder = (item, removeReminder) => (
                     )
                 }
             }
-        ]}
-        style={{ backgroundColor: 'white' }}>
-        <View style={{ flexDirection: 'row', borderWidth: 1 }}>
+        ]}>
+        <View style={ItemReminderStyle.overview}>
             <Image
                 source={{ uri: 'http://image.tmdb.org/t/p/w185/' + item.poster_path }}
-                style={{ height: 150, margin: 5, flex: 0.3 }}
+                style={ItemReminderStyle.poster}
             />
-            <View style={{ justifyContent: 'space-around', flex: 0.7, marginLeft: 2 }}>
-                <Text style={{ fontSize: 24, color: 'black' }}>{item.title}</Text>
-                <Text style={{ fontSize: 24, color: 'black' }}>{item.date} {item.time}</Text>
+            <View style={ItemReminderStyle.viewText}>
+                <Text style={ItemReminderStyle.text}>{item.title}</Text>
+                <Text style={ItemReminderStyle.text}>{item.date} {item.time}</Text>
             </View>
             <View>
                 <Image
                     source={require('../images/chevron-right.png')}
-                    style={{ width: 50, top: '40%' }}
+                    style={ItemReminderStyle.btnSwipe}
                 />
             </View>
         </View>

@@ -21,7 +21,13 @@ import {
     CHANGE_EMAIL,
     CHANGE_BIRTHDAY,
     CHANGE_AVATAR,
-    EDIT_PROFILE
+    EDIT_PROFILE,
+    LOAD_DATA_DETAIL_MOVIE,
+    LOAD_DATA_DETAIL_FAVORITE,
+    LOAD_DATA_CREDIT_MOVIE,
+    LOAD_DATA_CREDIT_FAVORITE,
+    INPUT_SEARCH,
+    SEARCH_DATA
 } from '../actions/ActionTypes';
 import { AsyncStorage } from 'react-native';
 
@@ -39,8 +45,10 @@ const initialState = {
     titleList: ["Popular", "Now Playing", "Top Rated", "Upcoming"],
     title: "Popular",
     searchBtn: false,
-    detail: [],
-    credit: [],
+    detailMovie: [],
+    detailFavorite: [],
+    creditMovie: [],
+    creditFavorite: [],
     reminder: [],
     profile: {
         avatar: '',
@@ -147,14 +155,14 @@ const popularReducer = (state = initialState, action) => {
 
         case REMOVE_FAVORITE:
             var getStar = state.star;
-            if(action.checkFavorite==0){
+            if (action.checkFavorite == 0) {
                 var getData = state.data;
                 getData.forEach(element => {
                     if (element.id == action.object.id) {
                         Object.assign(element, action.object);
                     }
                 });
-            }else{
+            } else {
                 var getData = [];
             }
             if (getStar.indexOf(action.object.id) != -1) {
@@ -211,16 +219,28 @@ const popularReducer = (state = initialState, action) => {
                 searchBtn: !state.searchBtn
             }
 
-        case LOAD_DATA_DETAIL:
+        case LOAD_DATA_DETAIL_MOVIE:
             return {
                 ...state,
-                detail: action.loadData
+                detailMovie: action.loadData
             }
 
-        case LOAD_DATA_CREDIT:
+        case LOAD_DATA_DETAIL_FAVORITE:
             return {
                 ...state,
-                credit: action.loadData
+                detailFavorite: action.loadData
+            }
+
+        case LOAD_DATA_CREDIT_MOVIE:
+            return {
+                ...state,
+                creditMovie: action.loadData
+            }
+
+        case LOAD_DATA_CREDIT_FAVORITE:
+            return {
+                ...state,
+                creditFavorite: action.loadData
             }
 
         case ADD_REMINDER:
@@ -304,6 +324,12 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 avatar: action.avatar
 
+            }
+
+        case SEARCH_DATA: 
+            return {
+                ...state,
+                favoriteList: action.loadData
             }
 
         default:

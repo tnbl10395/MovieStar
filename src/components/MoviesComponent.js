@@ -3,6 +3,7 @@ import { View, Text, Image, FlatList, ActivityIndicator } from 'react-native';
 import HeaderContainer from '../containers/HeaderContainer';
 import { ItemReminder } from '../templates/ItemReminder';
 import { ItemList } from '../templates/ItemList';
+import { MoviesStyle } from '../style/Style';
 
 class MoviesComponent extends React.Component {
 
@@ -28,19 +29,26 @@ class MoviesComponent extends React.Component {
         }
     }
 
+    // onRefresh() {
+    //     this.setState({
+    //         refreshing:true,
+    //     });
+    //     this.props.loadPopular().then(()=>this.setState({refreshing:false}));
+    // }
+
     render() {
 
         const favorite = 0;
 
         return (
-            <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={MoviesStyle.overview}>
                 <HeaderContainer nav={this.props.navigation} />
                 {
                     this.props.data.length == 0?
                     <ActivityIndicator 
                         size="large" 
                         color="#0000ff"
-                        style={{justifyContent:'center', marginTop:250}} />
+                        style={MoviesStyle.indicator} />
                     :null
                 }
                 <FlatList

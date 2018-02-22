@@ -73,6 +73,22 @@ export const getAllFavorites = (dispatch, getFavoriteList) => {
     });
 }
 
+export const searchDataFavorite = (dispatch, str, searchFavorite) => {
+    let data = [];
+    db.transaction((tx) => {
+        var sql = 'select * from favorites where title like "%'+str+'%"';
+        tx.executeSql(sql, [], (tx, results) => {
+            for (var i = 0; i < results.rows.length; i++) {
+                data.push(results.rows.item(i));
+            }
+            // alert(JSON.stringify(data))
+            dispatch(searchFavorite(data));
+        }, (error) => {
+            alert(JSON.stringify(error))
+        });
+    });
+}
+
 export const addReminderList = (obj, dispatch, addReminder) => {
     let data = [];
     let array = [
@@ -90,7 +106,7 @@ export const addReminderList = (obj, dispatch, addReminder) => {
             if (results.insertId != null) {
                 PushNotification.localNotificationSchedule({
                     message: obj.title, // (required)
-                    id: obj.id,
+                    id: obj.id.toString(),
                     date: new Date(obj.fulldate) // in 60 secs
                 });
                 tx.executeSql(query2, [], (tx, results) => {
@@ -129,7 +145,7 @@ export const removeReminderList = (obj, dispatch, removeReminder) => {
         var query1 = 'delete from reminder where id=?';
         var query2 = 'select * from reminder';
         tx.executeSql(query1, [obj.id], (tx, results) => {
-            PushNotification.cancelLocalNotifications({ id: obj.id });
+            PushNotification.cancelLocalNotifications({ id: obj.id.toString() });
             tx.executeSql(query2, [], (tx, results) => {
                 for (var i = 0; i < results.rows.length; i++) {
                     data.push(results.rows.item(i));
@@ -144,4 +160,5 @@ export const removeReminderList = (obj, dispatch, removeReminder) => {
 
     });
 }
+
 
