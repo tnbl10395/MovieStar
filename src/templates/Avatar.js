@@ -39,7 +39,7 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
 
             {
                 !status ?
-                    <Text style={{ marginTop: 15, color: 'black', fontWeight: 'bold', fontSize: 24 }}>{data.name}</Text>
+                    <Text style={{ marginTop: 15, color: 'black', fontWeight: 'bold', fontSize: 24 }}>{data.name!=''?data.name:'Name'}</Text>
                     :
                     textName(name, changeName)
             }
@@ -51,7 +51,7 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
                 />
                 {
                     !status ?
-                        <Text style={{ color: 'black', fontSize: 20, marginLeft: 20 }}>{data.birthday}</Text>
+                        <Text style={{ color: 'black', fontSize: 20, marginLeft: 20 }}>{data.birthday!=''?data.birthday:'Birthday'}</Text>
                         :
                         textBirthday(birthday, showDate)
 
@@ -63,7 +63,7 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
                 />
                 {
                     !status ?
-                        <Text style={{ color: 'black', fontSize: 20, marginLeft: 20 }}>{data.email}</Text>
+                        <Text style={{ color: 'black', fontSize: 20, marginLeft: 20 }}>{data.email!=''?data.email:'Email'}</Text>
                         :
                         textEmail(email, changeEmail)
                 }
