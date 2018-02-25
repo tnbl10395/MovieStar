@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import DetailFavoritesComponent from '../components/DetailFavoritesComponent';
 import { getDetail, getCredit } from '../api/api';
-import { loadDataDetail, loadDataCredit, addReminder, loadDataDetailFavorite, loadDataCreditFavorite } from '../actions/PopularActions';
+import { addReminder, loadDataDetailFavorite, loadDataCreditFavorite } from '../actions/PopularActions';
 import { addReminderList } from '../localDatabase/localdatabase';
 
 const mapStateToProps = (state) => ({
-    dataDetail: state.popularReducer.detailFavorite,
-    dataCredit: state.popularReducer.creditFavorite,
-    isDateTimePickerVisible: state.popularReducer.isDateTimePickerVisible
+    dataDetail: state.detailReducer.detailFavorite,
+    dataCredit: state.detailReducer.creditFavorite,
+    isDateTimePickerVisible: state.dataReducer.isDateTimePickerVisible
 });
 
 const mapDispatchToProps = (dispatch) => ({

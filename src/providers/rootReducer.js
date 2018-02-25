@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import nav from '../providers/nav';
-import popularReducer from '../providers/PopularReducer';
+import dataReducer from '../providers/DataReducer';
+import profileReducer from '../providers/ProfileReducer';
+import reminderReducer from '../providers/ReminderReducer';
+import detailReducer from '../providers/DetailReducer';
 
 const rootReducer = combineReducers({
-    // nav,
-    popularReducer
+    detailReducer,
+    reminderReducer,
+    profileReducer,
+    dataReducer
 });
 
 export default rootReducer;

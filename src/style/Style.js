@@ -9,7 +9,9 @@ export const MoviesStyle = StyleSheet.create({
         backgroundColor: 'white'
     },
     indicator: {
-        marginTop: 250
+        position:'absolute',
+        width:width*1,
+        height:height*0.9
     }
 });
 
@@ -137,7 +139,7 @@ export const ItemReminderStyle = StyleSheet.create({
 
 export const ReminderListStyle = StyleSheet.create({
     overview: {
-        marginTop: 15
+        marginTop: 5
     },
     title: {
         color: 'black',
@@ -156,7 +158,7 @@ export const ReminderListStyle = StyleSheet.create({
     },
     viewBtnShowAll: {
         alignItems: 'center',
-        marginTop: 20
+        marginTop: 5
     },
     btnShowAll: {
         backgroundColor: '#303F9F',

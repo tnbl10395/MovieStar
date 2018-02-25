@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, FlatList } from 'react-native';
 import { ItemFavoriteList } from '../templates/ItemList';
-import HeaderFavoriteContainer from '../containers/HeaderFavoriteContainer';
+import HeaderComponentContainer from '../containers/HeaderComponentContainer';
 import SearchButtonContainer from '../containers/SearchButtonContainer';
 
 class FavoritesComponent extends React.Component {
@@ -19,7 +19,7 @@ class FavoritesComponent extends React.Component {
 
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
-                <HeaderFavoriteContainer navigation={this.props.navigation}/>
+                <HeaderComponentContainer navigation={this.props.navigation} name={'Favorite'}/>
                 <SearchButtonContainer />
                 <FlatList
                     data={this.props.favoriteData}

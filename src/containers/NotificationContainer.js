@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { NotificationFavorite } from '../templates/Notification';
 
 const mapStateToProps = (state) => ({
-    amount: state.popularReducer.amountFavorite,
-    statusFavorite: state.popularReducer.statusFavorite
+    amount: state.dataReducer.amountFavorite,
+    statusFavorite: state.dataReducer.statusFavorite
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -3,8 +3,8 @@ import { Header } from '../templates/Header';
 import { changeShowListPopular, changeTitles } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-    list: state.popularReducer.list,
-    title: state.popularReducer.title
+    list: state.dataReducer.list,
+    title: state.dataReducer.title
 });
 
 const mapDispatchToProps = (dispatch) => ({

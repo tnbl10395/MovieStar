@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Image, Text, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import FavoriteButtonContainer from '../containers/FavoriteButtonContainer';
-import DetailButtonContainer from '../containers/DetailButtonContainer';
 import { ItemListStyle } from '../style/Style';
 
 export const ItemList = (item, list, navigation, favorite) => (

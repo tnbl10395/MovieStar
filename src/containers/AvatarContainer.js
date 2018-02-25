@@ -3,12 +3,12 @@ import { Avatar } from '../templates/Avatar';
 import { changeName, changeSex, changeEmail, changeBirthday, changeAvatar } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-    data: state.popularReducer.profile,
-    avatar: state.popularReducer.avatar,
-    name: state.popularReducer.name,
-    sex: state.popularReducer.sex,
-    email: state.popularReducer.email,
-    birthday: state.popularReducer.birthday
+    data: state.profileReducer.profile,
+    avatar: state.profileReducer.avatar,
+    name: state.profileReducer.name,
+    sex: state.profileReducer.sex,
+    email: state.profileReducer.email,
+    birthday: state.profileReducer.birthday
 
 });
 

@@ -59,6 +59,8 @@ class DetailFavoritesComponent extends React.Component {
                     onConfirm={this._handleDatePicked}
                     onCancel={this._hideDateTimePicker}
                     mode='datetime'
+                    is24Hour={false}
+                    datePickerModeAndroid='spinner'
                 />
             </View>
         );

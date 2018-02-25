@@ -3,8 +3,8 @@ import { SearchButton } from '../templates/SearchButton';
 import { changeSearchButton, searchFavorite } from '../actions/PopularActions';
 import { searchDataFavorite } from '../localDatabase/localdatabase';
 const mapStateToProps = (state) => ({
-    searchBtn: state.popularReducer.searchBtn,
-    input: state.popularReducer.inputSearch
+    searchBtn: state.dataReducer.searchBtn,
+    input: state.dataReducer.inputSearch
 });
 
 const mapDispatchToProps = (dispatch) => ({

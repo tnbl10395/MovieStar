@@ -60,6 +60,7 @@ class DetailMoviesComponent extends React.Component {
                     onCancel={this._hideDateTimePicker}
                     mode='datetime'
                     is24Hour={false}
+                    datePickerModeAndroid='spinner'
                 />
             </View>
         );

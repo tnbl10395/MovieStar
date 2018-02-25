@@ -27,7 +27,10 @@ import {
     LOAD_DATA_CREDIT_MOVIE,
     LOAD_DATA_CREDIT_FAVORITE,
     SEARCH_DATA,
-    INPUT_SEARCH
+    INPUT_SEARCH,
+    CHANGE_SLIDER,
+    CHOOSE_YEAR_RELEASE,
+    SELECT_SORTING
 } from '../actions/ActionTypes';
 
 // movies
@@ -226,5 +229,28 @@ export const searchFavorite = (loadData) => {
     return {
         type: SEARCH_DATA,
         loadData
+    }
+}
+
+// settings
+
+export const changeSlider = (value) => {
+    return {
+        type: CHANGE_SLIDER,
+        value
+    }
+}
+
+export const chooseYearRelease = (value) => {
+    return {
+        type: CHOOSE_YEAR_RELEASE,
+        value
+    }
+}
+
+export const selectSorting = (value) => {
+    return {
+        type: SELECT_SORTING,
+        value
     }
 }

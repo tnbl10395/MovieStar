@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import DetailMoviesComponent from '../components/DetailMoviesComponent';
 import { getDetail, getCredit } from '../api/api';
-import { loadDataDetail, loadDataCredit, addReminder, loadDataDetailMovie, loadDataCreditMovie } from '../actions/PopularActions';
+import { addReminder, loadDataDetailMovie, loadDataCreditMovie } from '../actions/PopularActions';
 import { addReminderList } from '../localDatabase/localdatabase';
 
 const mapStateToProps = (state) => ({
-    dataDetail: state.popularReducer.detailMovie,
-    dataCredit: state.popularReducer.creditMovie,
-    isDateTimePickerVisible: state.popularReducer.isDateTimePickerVisible
+    dataDetail: state.detailReducer.detailMovie,
+    dataCredit: state.detailReducer.creditMovie,
+    isDateTimePickerVisible: state.dataReducer.isDateTimePickerVisible
 });
 
 const mapDispatchToProps = (dispatch) => ({

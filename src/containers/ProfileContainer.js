@@ -3,8 +3,8 @@ import ProfileComponent from '../components/ProfileComponent';
 import { goProfile, changeBirthday } from '../actions/PopularActions';
 
 const mapStateToProps = (state) => ({
-    status: state.popularReducer.goProfile,
-    data: state.popularReducer.profile,
+    status: state.profileReducer.goProfile,
+    data: state.profileReducer.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

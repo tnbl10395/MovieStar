@@ -2,10 +2,8 @@ import { connect } from 'react-redux';
 import FavoriteButtonComponent from '../components/FavoriteButtonComponent';
 import { addFavoriteList,getFavoriteList,loadDataPopular, removeFavorite } from '../actions/PopularActions';
 import { addFavorites,removeFavorites } from '../localDatabase/localdatabase';
-import { getPopular } from '../api/api';
 
 const mapStateToProps = (state) => ({
-    // check: state.popularReducer.check
 });
 
 const mapDispatchToProps = (dispatch) => ({

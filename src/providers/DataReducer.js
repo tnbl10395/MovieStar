@@ -1,71 +1,50 @@
 import {
     LOAD_DATA_POPULAR,
-    CHANGE_SHOW_LIST,
-    ADD_FAVORITES,
-    GET_FAVORITES,
-    REMOVE_FAVORITE,
-    CHANGE_TITLE,
     LOAD_DATA_NOW_PLAYING,
     LOAD_DATA_TOP_RATED,
     LOAD_DATA_UPCOMING,
+    CHANGE_SHOW_LIST,
+    ADD_FAVORITES,
+    REMOVE_FAVORITE,
+    GET_FAVORITES,
+    CHANGE_TITLE,
     CHANGE_SEARCH_BUTTON,
-    LOAD_DATA_DETAIL,
-    LOAD_DATA_CREDIT,
-    ADD_REMINDER,
-    LOAD_REMINDER,
-    REMOVE_REMINDER,
-    LOAD_PROFILE,
-    GO_PROFILE,
-    CHANGE_NAME,
-    CHANGE_SEX,
-    CHANGE_EMAIL,
-    CHANGE_BIRTHDAY,
-    CHANGE_AVATAR,
-    EDIT_PROFILE,
-    LOAD_DATA_DETAIL_MOVIE,
-    LOAD_DATA_DETAIL_FAVORITE,
-    LOAD_DATA_CREDIT_MOVIE,
-    LOAD_DATA_CREDIT_FAVORITE,
-    INPUT_SEARCH,
-    SEARCH_DATA
+    SEARCH_DATA,
+    CHANGE_SLIDER,
+    CHOOSE_YEAR_RELEASE,
+    SELECT_SORTING
 } from '../actions/ActionTypes';
-import { AsyncStorage } from 'react-native';
+
+const number = 0;
 
 const initialState = {
+    //state for MoviesComponent
     data: [],
     dataPopular: [],
     dataNowPlaying: [],
     dataTopRated: [],
     dataUpcoming: [],
     list: true,
+    titleList: ["Popular", "Now Playing", "Top Rated", "Upcoming"],
+    title: "Popular",
+    //state for FavoriteComponent
     favoriteList: [],
     amountFavorite: 0,
     statusFavorite: false,
     star: [],
-    titleList: ["Popular", "Now Playing", "Top Rated", "Upcoming"],
-    title: "Popular",
     searchBtn: false,
-    detailMovie: [],
-    detailFavorite: [],
-    creditMovie: [],
-    creditFavorite: [],
-    reminder: [],
-    profile: {
-        avatar: '',
-        name: '',
-        birthday: '',
-        email: '',
-        sex: true,
-    },
-    avatar: '',
-    goProfile: false,
-    name: '',
-    birthday: '',
-    email: '',
-    sex: true,
+    //state for SettingComponent
+    checkPopular: true,
+    checkTopRated: false,
+    checkUpcoming: false,
+    checkNowPlaying: false,
+    checkReleaseDate: false,
+    checkRating: false,
+    valueSlider: number.toPrecision(2),
+    valueYearRelease: '1970' 
 }
 
-const popularReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_DATA_POPULAR:
             var arrayData = action.loadData.results;
@@ -82,7 +61,6 @@ const popularReducer = (state = initialState, action) => {
                 dataPopular: arrayData,
                 data: arrayData,
             }
-
         case LOAD_DATA_NOW_PLAYING:
             var arrayData = action.loadData.results;
             var arrayFavorite = state.star;
@@ -97,7 +75,6 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 dataNowPlaying: arrayData,
             }
-
         case LOAD_DATA_TOP_RATED:
             var arrayData = action.loadData.results;
             var arrayFavorite = state.star;
@@ -112,7 +89,6 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 dataTopRated: arrayData,
             }
-
         case LOAD_DATA_UPCOMING:
             var arrayData = action.loadData.results;
             var arrayFavorite = state.star;
@@ -127,13 +103,11 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 dataUpcoming: arrayData,
             }
-
         case CHANGE_SHOW_LIST:
             return {
                 ...state,
                 list: !state.list,
             }
-
         case ADD_FAVORITES:
             var getStar = state.star;
             var getData = state.data;
@@ -152,7 +126,6 @@ const popularReducer = (state = initialState, action) => {
                 star: getStar,
                 amountFavorite: action.favoriteList.length,
             }
-
         case REMOVE_FAVORITE:
             var getStar = state.star;
             if (action.checkFavorite == 0) {
@@ -175,7 +148,6 @@ const popularReducer = (state = initialState, action) => {
                 star: getStar,
                 amountFavorite: action.favoriteList.length
             }
-
         case GET_FAVORITES:
             var checkStar = [];
             var array = action.list;
@@ -188,153 +160,90 @@ const popularReducer = (state = initialState, action) => {
                 star: checkStar,
                 amountFavorite: action.list.length
             }
-
         case CHANGE_TITLE:
             switch (action.title) {
                 case "Popular":
                     state.title = state.titleList[1];
                     state.data = state.dataNowPlaying;
+                    state.checkPopular = false;
+                    state.checkTopRated = false;
+                    state.checkUpcoming = false;
+                    state.checkNowPlaying = true;
                     break;
                 case "Now Playing":
                     state.title = state.titleList[2];
                     state.data = state.dataTopRated;
+                    state.checkPopular = false;
+                    state.checkTopRated = true;
+                    state.checkUpcoming = false;
+                    state.checkNowPlaying = false;
                     break;
                 case "Top Rated":
                     state.title = state.titleList[3];
                     state.data = state.dataUpcoming;
+                    state.checkPopular = false;
+                    state.checkTopRated = false;
+                    state.checkUpcoming = true;
+                    state.checkNowPlaying = false;
                     break;
                 case "Upcoming":
                     state.title = state.titleList[0];
                     state.data = state.dataPopular;
+                    state.checkPopular = true;
+                    state.checkTopRated = false;
+                    state.checkUpcoming = false;
+                    state.checkNowPlaying = false;
                     break;
             }
             return {
                 ...state,
 
             }
-
         case CHANGE_SEARCH_BUTTON:
             return {
                 ...state,
                 searchBtn: !state.searchBtn
             }
-
-        case LOAD_DATA_DETAIL_MOVIE:
-            return {
-                ...state,
-                detailMovie: action.loadData
-            }
-
-        case LOAD_DATA_DETAIL_FAVORITE:
-            return {
-                ...state,
-                detailFavorite: action.loadData
-            }
-
-        case LOAD_DATA_CREDIT_MOVIE:
-            return {
-                ...state,
-                creditMovie: action.loadData
-            }
-
-        case LOAD_DATA_CREDIT_FAVORITE:
-            return {
-                ...state,
-                creditFavorite: action.loadData
-            }
-
-        case ADD_REMINDER:
-            return {
-                ...state,
-                reminder: action.reminderList
-            }
-
-        case LOAD_REMINDER:
-            return {
-                ...state,
-                reminder: action.reminderList
-            }
-
-        case REMOVE_REMINDER:
-            return {
-                ...state,
-                reminder: action.reminderList
-            }
-
-        case LOAD_PROFILE:
-            if (action.loadData == null) {
-                return {
-                    ...state
-                }
-            } else {
-                return {
-                    ...state,
-                    profile: action.loadData,
-                }
-            }
-
-
-        case EDIT_PROFILE:
-            return {
-                ...state,
-                profile: action.loadData,
-            }
-
-        case GO_PROFILE:
-            return {
-                ...state,
-                goProfile: !state.goProfile,
-                avatar: state.profile.avatar,
-                name: state.profile.name,
-                birthday: state.profile.birthday,
-                email: state.profile.email,
-                sex: state.profile.sex
-            }
-
-        case CHANGE_NAME:
-            return {
-                ...state,
-                name: action.name
-
-            }
-
-        case CHANGE_SEX:
-            return {
-                ...state,
-                sex: action.sex
-
-            }
-
-        case CHANGE_EMAIL:
-            return {
-                ...state,
-                email: action.email
-
-            }
-
-        case CHANGE_BIRTHDAY:
-            return {
-                ...state,
-                birthday: action.birthday
-
-            }
-
-        case CHANGE_AVATAR:
-            return {
-                ...state,
-                avatar: action.avatar
-
-            }
-
-        case SEARCH_DATA: 
+        case SEARCH_DATA:
             return {
                 ...state,
                 favoriteList: action.loadData
             }
-
+        case CHANGE_SLIDER:
+            let newData = [];
+            if (action.value < 1 && action.value > 0) {
+                state.valueSlider = action.value.toPrecision(1);
+            } else {
+                state.valueSlider = action.value.toPrecision(2)
+            }
+            state.data.forEach(element => {
+                if(element.vote_average >= state.valueSlider){
+                    newData.push(element);
+                }
+            });
+            return {
+                ...state,
+                data: newData,
+            }
+        case CHOOSE_YEAR_RELEASE:
+            return {
+                ...state,
+                valueYearRelease: action.value
+            }
+        case SELECT_SORTING:
+            if(action.value=='ReleaseDate'){
+                state.checkReleaseDate = true;
+                state.checkRating = false;
+            }else if(action.value=='Rating'){
+                state.checkReleaseDate = false;
+                state.checkRating = true;
+            }
+            return {
+                ...state,
+            }
         default:
             return state;
     }
 }
 
-export default popularReducer;
+export default dataReducer;

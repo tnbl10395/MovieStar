@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableWithoutFeedback, TouchableOpacity } from 'r
 import { HeaderStyle } from '../style/Style';
 
 
-export const HeaderFavorite = ({ navigation }) => (
+export const HeaderComponent = ({ navigation, name }) => (
     <View style={HeaderStyle.overview}>
         <TouchableWithoutFeedback
             onPress={() => navigation.navigate('DrawerOpen')}>
@@ -12,7 +12,7 @@ export const HeaderFavorite = ({ navigation }) => (
                 style={HeaderStyle.btnProfile}
             />
         </TouchableWithoutFeedback>
-        <Text style={HeaderStyle.textName}>Favorite</Text>
+        <Text style={HeaderStyle.textName}>{name}</Text>
         <View>
         </View>
     </View>

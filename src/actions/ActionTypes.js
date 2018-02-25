@@ -35,3 +35,7 @@ export const CHANGE_BIRTHDAY = 'CHANGE_BIRTHDAY';
 export const CHANGE_EMAIL = 'CHANGE_EMAIL';
 export const CHANGE_SEX = 'CHANGE_SEX';
 export const CHANGE_AVATAR = 'CHANGE_AVATAR';
+//settings 
+export const CHANGE_SLIDER = 'CHANGE_SLIDER';
+export const CHOOSE_YEAR_RELEASE = 'CHOOSE_YEAR_RELEASE';
+export const SELECT_SORTING = 'SELECT_SORTING';

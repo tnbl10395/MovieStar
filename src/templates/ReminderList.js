@@ -6,7 +6,7 @@ export const ReminderList = ({ navigation, data }) => (
     <View style={ReminderListStyle.overview}>
         <Text style={ReminderListStyle.title}>Reminder List:</Text>
         <FlatList
-
+            style={{height:140}}
             data={data.length > 2? data.slice(data.length-2,data.length).reverse():data.reverse()}
             renderItem={({ item }) =>
                 <View style={ReminderListStyle.viewText}>

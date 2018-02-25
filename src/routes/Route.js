@@ -3,7 +3,7 @@ import { View, Dimensions, Image, Text, TouchableOpacity, } from 'react-native';
 import { TabNavigator, StackNavigator, DrawerNavigator, addNavigationHelpers, NavigationActions } from 'react-navigation';
 import MoviesContainer from '../containers/MoviesContainer';
 import FavoritesContainer from '../containers/FavoritesContainer';
-import SettingsComponent from '../components/SettingsComponent';
+import SettingsContainer from '../containers/SettingsContainer';
 import AboutComponent from '../components/AboutComponent';
 import ProfileContainer from '../containers/ProfileContainer';
 import DetailMoviesContainer from '../containers/DetailMoviesContainer';
@@ -74,13 +74,32 @@ export const TabComponent = TabNavigator(
                     </View>
                 ),
             }
-
         },
         Settings: {
-            screen: SettingsComponent
+            screen: SettingsContainer,
+            navigationOptions: {
+                tabBarLabel: 'Settings',
+                tabBarIcon: ({ tintColor }) => (
+                    <View>
+                        <Image
+                            source={require('../images/settings.png')}
+                        />
+                    </View>
+                ),
+            }
         },
         About: {
-            screen: AboutComponent
+            screen: AboutComponent,
+            navigationOptions: {
+                tabBarLabel: 'About',
+                tabBarIcon: ({ tintColor }) => (
+                    <View>
+                        <Image
+                            source={require('../images/information.png')}
+                        />
+                    </View>
+                ),
+            }
         },
     }, {
         tabBarPosition: 'bottom',
@@ -124,7 +143,7 @@ export const DrawComponent = DrawerNavigator(
         drawerPosition: 'left',
         drawerWidth: width * 0.8,
         contentComponent: ({ navigation }) => (
-            <View style={{ top: '3%' }}>
+            <View style={{ top: '1%' }}>
                 <Avatar />
                 <EditButton navigation={navigation} />
                 <ReminderList navigation={navigation} />

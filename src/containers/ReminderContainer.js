@@ -5,7 +5,7 @@ import { getAllReminder, removeReminderList } from '../localDatabase/localdataba
 
 
 const mapStateToProps = (state) => ({
-    data: state.popularReducer.reminder
+    data: state.reminderReducer.reminder
 });
 
 const mapDispatchToProps = (dispatch) => ({

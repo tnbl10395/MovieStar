@@ -9,7 +9,7 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
                 !status ?
                     <Image
                         source={data.avatar.uri == null ? require('../images/user.png') : { uri: data.avatar.uri }}
-                        style={{ width: 120, height: 120, borderRadius: 120 }}
+                        style={{ width: 100, height: 100, borderRadius: 100 }}
                     />
                     :
                     <TouchableOpacity
@@ -39,7 +39,7 @@ export const Avatar = ({ data, status, showDate, name, changeName, sex, changeSe
 
             {
                 !status ?
-                    <Text style={{ marginTop: 15, color: 'black', fontWeight: 'bold', fontSize: 24 }}>{data.name!=''?data.name:'Name'}</Text>
+                    <Text style={{ marginTop: 5, color: 'black', fontWeight: 'bold', fontSize: 24 }}>{data.name!=''?data.name:'Name'}</Text>
                     :
                     textName(name, changeName)
             }

@@ -42,6 +42,7 @@ class ProfileComponent extends React.Component {
                     onConfirm={this._handleDatePicked}
                     onCancel={this._hideDateTimePicker}
                     mode='date'
+                    datePickerModeAndroid='spinner'
                 />
             </View>
         );

@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-
+import { View, Text, Image, WebView } from 'react-native';
+import HeaderComponentContainer from '../containers/HeaderComponentContainer';
 class AboutComponent extends React.Component {
-    static navigationOptions = {
-        tabBarLabel: 'About',
-        tabBarIcon: ({tintColor}) => (
-            <Image 
-                source={require('../images/information.png')}
-                // style={[{tintColor:tintColor},{width:23,height:23}]}
-            />
-        ),
-    }
-    render(){
-        return ( 
-            <View>
-                <Text>About Component</Text>
+    render() {
+        return (
+            <View style={{flex:1}}>
+                <HeaderComponentContainer navigation={this.props.navigation} name={'About'} />
+                <WebView
+                    source={{ uri: 'https://www.themoviedb.org/about' }}
+                    style={{ width: '100%' }}
+                />
             </View>
         );
     }

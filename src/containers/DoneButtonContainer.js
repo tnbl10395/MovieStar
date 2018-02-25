@@ -14,11 +14,11 @@ async function editProfileInStore(object, dispatch, editProfile) {
 }
 
 const mapStateToProps = (state) => ({
-    avatar: state.popularReducer.avatar,
-    name: state.popularReducer.name,
-    birthday: state.popularReducer.birthday,
-    email: state.popularReducer.email,
-    sex: state.popularReducer.sex,
+    avatar: state.profileReducer.avatar,
+    name: state.profileReducer.name,
+    birthday: state.profileReducer.birthday,
+    email: state.profileReducer.email,
+    sex: state.profileReducer.sex,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -4,8 +4,8 @@ import { AsyncStorage } from 'react-native';
 import { getAllFavorites } from '../localDatabase/localdatabase';
 import { getFavoriteList } from '../actions/PopularActions';
 const mapStateToProps = (state) => ({
-    favoriteData: state.popularReducer.favoriteList,
-    data: state.popularReducer.data,
+    favoriteData: state.dataReducer.favoriteList,
+    data: state.dataReducer.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
